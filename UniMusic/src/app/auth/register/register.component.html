@@ -2,7 +2,7 @@
 <body>
   <div id="Container" class="container">
     <form class="form">
-      <input type="text" name="cognome" class="form-control" [(ngModel)]="registerData.username" placeholder="Cognome">
+      <input type="text" name="username" class="form-control" [(ngModel)]="registerData.username" placeholder="Username">
 
         <input type="email" name="email" class="form-control" [(ngModel)]="registerData.email" placeholder="Email" (blur)="checkEmpty('email')">
         <div *ngIf="showError.email && !registerData.email" class="alert alert-danger" role="alert">Il campo Email è obbligatorio.</div>

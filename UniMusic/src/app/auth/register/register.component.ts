@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ILoginData } from '../../models/i-login-data';
 import { AuthService } from '../auth.service';
 import { IUser } from '../../models/i-user';
 import { Router } from '@angular/router';
@@ -19,7 +18,7 @@ export class RegisterComponent {
   constructor(private authSvc:AuthService, private router:Router){}
 
   signUp() {
-    if (!this.registerData.firstname || !this.registerData.lastname || !this.registerData.email || !this.registerData.password) {
+    if (!this.registerData.username || !this.registerData.email || !this.registerData.password) {
 
       return;
     }

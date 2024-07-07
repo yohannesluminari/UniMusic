@@ -6,7 +6,6 @@ import { IUser } from '../models/i-user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 import { ILoginData } from '../models/i-login-data';
-import { IMovies } from '../models/i-movies';
 
 type AccessData = {
   accessToken: string,
@@ -37,7 +36,6 @@ export class AuthService {
 
   resgisterUrl: string = environment.resgisterUrl;
   loginUrl: string = environment.loginUrl;
-  movieUrl: string = environment.movieUrl;
 
   register(newUser: Partial<IUser>): Observable<AccessData> {
     return this.Http.post<AccessData>(this.resgisterUrl, newUser);
@@ -92,29 +90,5 @@ export class AuthService {
     return this.Http.get<IUser[]>(environment.userUrl);
   }
 
-  getMovies(): Observable<IMovies[]> {
-    return this.Http.get<IMovies[]>(environment.movieUrl);
-  }
 
-  getUsers(): IUser[] {
-    return this.users;
-  }
-  private favoriteMoviesKey = 'favoriteMovies';
-
-  addToFavorites(movie: IMovies): void {
-    const favoriteMovies = this.getFavoriteMovies();
-    favoriteMovies.push(movie);
-    localStorage.setItem(this.favoriteMoviesKey, JSON.stringify(favoriteMovies));
-  }
-
-  removeFromFavorites(movie: IMovies): void {
-    let favoriteMovies = this.getFavoriteMovies();
-    favoriteMovies = favoriteMovies.filter(m => m.id !== movie.id);
-    localStorage.setItem(this.favoriteMoviesKey, JSON.stringify(favoriteMovies));
-  }
-
-  getFavoriteMovies(): IMovies[] {
-    const favoriteMoviesJson = localStorage.getItem(this.favoriteMoviesKey);
-    return favoriteMoviesJson ? JSON.parse(favoriteMoviesJson) : [];
-  }
 }

@@ -1,0 +1,209 @@
+/* Contenitore principale del portfolio */
+.portfolio-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 40px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  //max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sezione immagine */
+.image-section {
+  flex: 1;
+  padding: 10px;
+}
+
+.profile-image {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Sezione informazioni */
+.info-section {
+  flex: 2;
+  padding: 20px;
+}
+
+.info-section .current-role {
+  font-size: 24px;
+  color: #333;
+  display: inline-block; /* Mantiene lo stile in linea */
+  font-weight: bold;
+}
+
+.info-section p.introduction {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #0056b3;
+}
+
+/* Sezione di contatto */
+.contact-section {
+  display: none;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.contact-section h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+  .portfolio-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .image-section, .info-section {
+    flex: none;
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+
+
+.animated-artists {
+  font-weight: bold;
+  background: linear-gradient(to right,
+    #FF4500 0%,
+    #FF6347 25%,
+    #FF7F50 50%,
+    #FFA07A 75%,
+    #FFB6C1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease, -webkit-text-fill-color 0.3s ease;
+}
+
+.animated-artists:hover {
+  background-position: 100%;
+  -webkit-text-fill-color: #FF4500;
+}
+
+.animated-tracks {
+  font-weight: bold;
+  background: linear-gradient(to right,
+    #007BFF 0%,
+    #0066cc 25%,
+    #0056b3 50%,
+    #004499 75%,
+    #003380 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease, -webkit-text-fill-color 0.3s ease;
+}
+
+.animated-tracks:hover {
+  background-position: 100%;
+  -webkit-text-fill-color: #007BFF;
+}
+.cobalt-gradient {
+  font-weight: bold;
+  background: linear-gradient(to right,
+    #3399FF 0%,
+    #66CCFF 25%,
+    #66CCFF 50%,
+    #3399FF 75%,
+    #0066CC 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease, -webkit-text-fill-color 0.3s ease;
+}
+
+.cobalt-gradient:hover {
+  background-position: 100%;
+  -webkit-text-fill-color: #3399FF;
+}
+
+
+/* Sezione di contatto */
+.contact-section {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 1000; /* Assicura che il form sia sovrapposto al contenuto */
+  width: 80%; /* Larghezza del form rispetto alla larghezza della finestra */
+  max-width: 600px; /* Massima larghezza del form */
+}
+
+.contact-section h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-section label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: calc(100% - 20px); /* Larghezza del campo input */
+}
+
+.contact-section textarea {
+  resize: vertical; /* Consente di ridimensionare verticalmente il campo textarea */
+}
+
+.contact-section input[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-section input[type="submit"]:hover {
+  background-color: #0056b3;
+}

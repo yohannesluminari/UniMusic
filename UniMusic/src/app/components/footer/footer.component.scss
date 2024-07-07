@@ -1,0 +1,54 @@
+/* Footer */
+.site-footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center; /* Centra il testo e i link */
+}
+
+.site-footer .container {
+  max-width: 1200px; /* Limita la larghezza massima del footer */
+  margin: 0 auto; /* Centra il footer */
+  padding: 0 20px; /* Spaziatura ai lati */
+}
+
+.site-footer .footer-content {
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente i contenuti */
+  align-items: center;
+  flex-wrap: wrap; /* Per gestire il wrap dei contenuti su schermi piccoli */
+}
+
+.site-footer .footer-left {
+  flex: 1; /* Occupa tutto lo spazio disponibile */
+}
+
+.site-footer .footer-left p {
+  margin: 0;
+  margin-bottom: 10px; /* Spazio tra il testo e i link */
+}
+
+.site-footer .footer-links {
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente i link */
+  flex-wrap: wrap; /* Per gestire il wrap dei link su schermi piccoli */
+}
+
+.site-footer .footer-links a {
+  color: #fff;
+  margin: 0 10px; /* Spazio tra i link */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Transizione per il cambio di colore */
+}
+
+.site-footer .footer-links a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .site-footer .footer-left {
+    flex: none; /* Resetta il flex su schermi piccoli */
+    margin-bottom: 10px; /* Spazio tra il testo e i link su schermi piccoli */
+  }
+}

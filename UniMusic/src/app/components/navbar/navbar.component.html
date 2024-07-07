@@ -1,0 +1,81 @@
+<!-- <nav class="navbar navbar-expand-md navbar-light ">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="showNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/areaPrivata">AreaPrivata</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/registeredUsers">Registered Users</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/FavouriteMovies">Favourite Films</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="!isUserLoggedIn">
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        </li>
+
+        <li class="nav-item px-3 flex-fill">
+          <a class="nav-link active btn btn-danger px-5" aria-current="page" routerLink="auth/register" *ngIf="!isUserLoggedIn">Register</a>
+        </li>
+        <li class="nav-item flex-fill">
+          <a class="nav-link active btn btn-success px-5" aria-current="page" routerLink="/auth/login" *ngIf="!isUserLoggedIn">Login</a>
+        </li>
+      </ul>
+      <a class="btn btn-danger logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Esci</a>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="#"><img src="./assets/UniMusic.png" width="100" /></a>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': showNavbar }">
+      <ul class="navbar-nav me-auto mb-0">
+
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/areaPrivata">AreaPrivata</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/registeredUsers">Registered Users</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/FavouriteMovies">Favourite Films</a>
+        </li>
+
+        <li class="nav-item flex-fill" *ngIf="!isUserLoggedIn">
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        </li>
+
+        <li class="nav-item px-3 flex-fill">
+          <a class="nav-link active btn btn-danger px-5" aria-current="page" routerLink="auth/register" *ngIf="!isUserLoggedIn">Register</a>
+        </li>
+        <li class="nav-item flex-fill">
+          <a class="nav-link active btn btn-success px-5" aria-current="page" routerLink="/auth/login" *ngIf="!isUserLoggedIn">Login</a>
+        </li>
+        <!-- Icona "person-circle" affiancata all'ultimo link -->
+        <li class="nav-item mx-4">
+          <a href=""><i class="bi bi-person-circle"></i></a>
+        </li>
+      </ul>
+
+      <form class="me-2 mb-2 mb-lg-0">
+        <input type="text" class="form-control form-control-sm" placeholder="Search" />
+      </form>
+      <a class="btn btn-danger logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Esci</a>
+      <a class="btn btnNav commerce" href="">m-commerce</a>
+    </div>
+  </div>
+</nav>

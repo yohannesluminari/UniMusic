@@ -1,0 +1,211 @@
+#light:hover {
+  color: white;
+  cursor: pointer;
+}
+
+body {
+  background-color: rgb(36, 150, 159);
+}
+.container{
+  background-color: rgb(255, 255, 255);
+}
+.slogan {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Media query per schermi tra 476px e 957px */
+}
+
+
+/* Contenitore principale del contenuto */
+.content {
+  text-align: center;
+  color: white;
+  margin-top: 14%;
+  @media (min-width: 476px) and (max-width: 957px) {
+    margin-top: 30%; /* Aumenta il margine superiore per schermi compresi tra 476px e 957px */
+  }
+   /* Media query per schermi sotto i 476px */
+  @media (max-width: 475px) {
+    margin-top: 40%; /* Aumenta il margine superiore per schermi sotto i 476px */
+  }
+}
+// SECTION SX AND DX
+.left-paragraph {
+  text-align: left;
+  margin-right: auto;
+  color: var(--accent-color);
+  font-size: 20px;
+}
+
+.right-paragraph {
+  text-align: right;
+  margin-left: auto;
+  color: var(--accent-color);
+  font-size: 20px;
+}
+
+/* Contenitore principale */
+.container {
+  transform: skewY(-20deg);
+  animation: animate 5s linear infinite;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9%;
+  .cube {
+    position: relative;
+    z-index: 2;
+
+    &:nth-child(2) {
+      z-index: 1;
+      translate: -60px -60px;
+    }
+
+    &:nth-child(3) {
+      z-index: 3;
+      translate: 60px 60px;
+    }
+
+    div {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      translate: calc(-70px * var(--x)) calc(-60px * var(--y));
+
+      span {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: var(--accent-color);
+        z-index: calc(1 * var(--i));
+        transition: 1.5s;
+
+        &:hover {
+          transition: 0s;
+          background: #ef4149;
+          filter: drop-shadow(0 0 30px #ef4149);
+
+          &:before,
+          &:after {
+            transition: 0s;
+            background: #ef4149;
+          }
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: -40px;
+          width: 40px;
+          height: 100%;
+          background: #fff;
+          transform-origin: right;
+          transform: skewY(45deg);
+          transition: 1.5s;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: -40px;
+          left: 0px;
+          width: 100%;
+          height: 40px;
+          background: #f2f2f2;
+          transform-origin: bottom;
+          transform: skewX(45deg);
+          transition: 1.5s;
+        }
+      }
+    }
+  }
+}
+
+/* Animazione */
+@keyframes animate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+// 3D H1 TEXT
+
+/* box ------------------------------------------------------ */
+
+#box {
+  text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+/* flashlight ------------------------------------------------------ */
+
+#flashlight {
+  color: hsla(0, 0%, 0%, 0);
+  perspective: 200px;
+  outline: none;
+}
+/* flash ------------------------------------------------------ */
+
+#flash {
+  display: inline-block;
+  text-shadow: #bbb 0 0 1px, #fff 0 -1px 2px, #fff 0 -3px 2px,
+    rgba(0, 0, 0, 0.8) 0 30px 25px;
+  transition: margin-left 0.3s cubic-bezier(0, 1, 0, 1);
+}
+
+#box:hover #flash {
+  margin-left: 20px;
+  transition: margin-left 1s cubic-bezier(0, 0.75, 0, 1);
+}
+
+/* light ------------------------------------------------------ */
+
+#light {
+  display: inline-block;
+  text-shadow: #111 0 0 1px, rgba(255, 255, 255, 0.1) 0 1px 3px;
+}
+
+#box:hover #light {
+  text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+  transform: rotateY(-60deg);
+  transition: transform 0.3s cubic-bezier(0, 0.75, 0, 1),
+    text-shadow 0.1s ease-out;
+}
+
+// GESTIONE RESPONSIVE PARAGRAFI SX E DX
+
+@media screen and (max-width: 1430px) {
+  .left-paragraph,
+  .right-paragraph {
+    display: none;
+  }
+}
+
+/* Sovrascrive la regola .container del media query min-width: 739px e max-width: 1430px */
+@media screen and (min-width: 739px) and (max-width: 1430px) {
+  /* Imposta il margin-top per tutti i dispositivi */
+  .container {
+    margin-top: 158px;
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+  .container {
+    margin-top: 30%;
+  }
+}
+
+
+
+.yohannes-container{
+  margin-top: 350px;
+}

@@ -1,0 +1,72 @@
+<body>
+  <div class="content">
+    <h1>Welcome to
+      <div id="box">
+        <p id="flashlight">
+          <span id="flash">Uni</span>
+          <span id="light">Music</span>
+        </p>
+      </div>
+
+      <p class="slogan">Explore a universe of music and listen to your favorite tracks</p>
+      <p class="slogan">Discover new melodies and share your musical passions with our community.</p>
+    </h1>
+    <app-carousel></app-carousel>
+  </div>
+
+  <div class="container">
+    <p class="left-paragraph">Click a cube to play or change and click again to stop</p>
+    <div class="cube">
+      <div style="--x:-1; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(0)"></span>
+        <span style="--i:2;" (click)="toggleAudio(1)"></span>
+        <span style="--i:1;" (click)="toggleAudio(2)"></span>
+      </div>
+      <div style="--x:0; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(3)"></span>
+        <span style="--i:2;" (click)="toggleAudio(4)"></span>
+        <span style="--i:1;" (click)="toggleAudio(5)"></span>
+      </div>
+      <div style="--x:1; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(6)"></span>
+        <span style="--i:2;" (click)="toggleAudio(7)"></span>
+        <span style="--i:1;" (click)="toggleAudio(8)"></span>
+      </div>
+    </div>
+    <div class="cube">
+      <div style="--x:-1; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(9)"></span>
+        <span style="--i:2;" (click)="toggleAudio(10)"></span>
+        <span style="--i:1;" (click)="toggleAudio(11)"></span>
+      </div>
+      <div style="--x:0; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(12)"></span>
+        <span style="--i:2;" (click)="toggleAudio(13)"></span>
+        <span style="--i:1;" (click)="toggleAudio(14)"></span>
+      </div>
+      <div style="--x:1; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(15)"></span>
+        <span style="--i:2;" (click)="toggleAudio(16)"></span>
+        <span style="--i:1;" (click)="toggleAudio(17)"></span>
+      </div>
+    </div>
+    <div class="cube">
+      <div style="--x:-1; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(18)"></span>
+        <span style="--i:2;" (click)="toggleAudio(19)"></span>
+        <span style="--i:1;" (click)="toggleAudio(20)"></span>
+      </div>
+      <div style="--x:0; --y:0;">
+        <span style="--i:3;" (click)="toggleAudio(21)"></span>
+        <span style="--i:2;" (click)="toggleAudio(22)"></span>
+        <span style="--i:1;" (click)="toggleAudio(23)"></span>
+      </div>
+    </div>
+    <p class="right-paragraph">Enjoy the relaxation with each cube representing a song</p>
+  </div>
+
+</body>
+<div class="yohannes-container">
+  <app-yohannes-luminari></app-yohannes-luminari>
+</div>
+<app-footer></app-footer>

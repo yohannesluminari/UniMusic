@@ -1,0 +1,12 @@
+<body>
+  <div class="container">
+    <h1>Accedi</h1>
+    <form>
+      <input type="email" name="email" [(ngModel)]="loginData.email" class="form-control" placeholder="Email" required>
+      <div *ngIf="submitted && !loginData.email" class="alert alert-danger" role="alert">Il campo Email è obbligatorio.</div>
+      <input type="password" name="password" [(ngModel)]="loginData.password" class="form-control" placeholder="Password" required>
+      <div *ngIf="submitted && !loginData.password" class="alert alert-danger" role="alert">Il campo Password è obbligatorio.</div>
+      <button (click)="signIn()" class="btn btn-success">Accedi</button>
+    </form>
+  </div>
+</body>

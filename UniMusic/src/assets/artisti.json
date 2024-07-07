@@ -1,0 +1,582 @@
+[
+  {
+    "id": 1,
+    "name": "Sfera Ebbasta",
+    "image": "/assets/artistiImg/1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Geolier",
+    "image": "/assets/artistiImg/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Lazza",
+    "image": "/assets/artistiImg/3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Shiva",
+    "image": "/assets/artistiImg/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Guè",
+    "image": "/assets/artistiImg/5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Tedua",
+    "image": "/assets/artistiImg/6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Marracash",
+    "image": "/assets/artistiImg/7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Pinguini Tattici Nucleari",
+    "image": "/assets/artistiImg/8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Capo Plaza",
+    "image": "/assets/artistiImg/9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Thasup",
+    "image": "/assets/artistiImg/10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "ANNA",
+    "image": "/assets/artistiImg/11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Madame",
+    "image": "/assets/artistiImg/12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Annalisa",
+    "image": "/assets/artistiImg/13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Angelina Mango",
+    "image": "/assets/artistiImg/14.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Maneskin",
+    "image": "/assets/artistiImg/15.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Rose Villain",
+    "image": "/assets/artistiImg/16.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Baby Gang",
+    "image": "/assets/artistiImg/17.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Gigi D’Agostino",
+    "image": "/assets/artistiImg/18.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Laura Pausini",
+    "image": "/assets/artistiImg/19.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Gigi D'Alessio",
+    "image": "/assets/artistiImg/20.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Tony Boy",
+    "image": "/assets/artistiImg/21.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Gemello",
+    "image": "/assets/artistiImg/22.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Bnkr44",
+    "image": "/assets/artistiImg/23.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Mecna",
+    "image": "/assets/artistiImg/24.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Nayt",
+    "image": "/assets/artistiImg/25.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Franco126",
+    "image": "/assets/artistiImg/26.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Ketama126",
+    "image": "/assets/artistiImg/27.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Pretty Solero",
+    "image": "/assets/artistiImg/28.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Calcutta",
+    "image": "/assets/artistiImg/29.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Bresh",
+    "image": "/assets/artistiImg/30.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Capo Plaza",
+    "image": "/assets/artistiImg/31.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Frah Quintale",
+    "image": "/assets/artistiImg/32.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Ugo Borgetti",
+    "image": "/assets/artistiImg/33.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Mace",
+    "image": "/assets/artistiImg/34.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Vegas Jones",
+    "image": "/assets/artistiImg/35.jpg"
+  },
+  {
+    "id": 36,
+    "name": "vale Pain",
+    "image": "/assets/artistiImg/36.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Asp126",
+    "image": "/assets/artistiImg/37.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Mara Sattei",
+    "image": "/assets/artistiImg/38.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Izi",
+    "image": "/assets/artistiImg/39.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Priestess",
+    "image": "/assets/artistiImg/40.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Elodie",
+    "image": "/assets/artistiImg/41.jpg"
+  },
+  {
+    "id": 42,
+    "name": "Gaia",
+    "image": "/assets/artistiImg/42.jpg"
+  },
+  {
+    "id": 43,
+    "name": "Articolo 31",
+    "image": "/assets/artistiImg/43.jpg"
+  },
+  {
+    "id": 44,
+    "name": "Venerus",
+    "image": "/assets/artistiImg/44.jpg"
+  },
+  {
+    "id": 45,
+    "name": "Ghemon",
+    "image": "/assets/artistiImg/45.jpg"
+  },
+  {
+    "id": 46,
+    "name": "Vaz Tè",
+    "image": "/assets/artistiImg/46.jpg"
+  },
+  {
+    "id": 47,
+    "name": "Dargen D'Amico",
+    "image": "/assets/artistiImg/47.jpg"
+  },
+  {
+    "id": 48,
+    "name": "Gemitaiz",
+    "image": "/assets/artistiImg/48.jpg"
+  },
+  {
+    "id": 49,
+    "name": "Massimo Pericolo",
+    "image": "/assets/artistiImg/49.jpg"
+  },
+  {
+    "id": 50,
+    "name": "Rosa Chemical",
+    "image": "/assets/artistiImg/50.jpg"
+  },
+  {
+    "id": 51,
+    "name": "Mambolosco",
+    "image": "/assets/artistiImg/51.jpg"
+  },
+  {
+    "id": 52,
+    "name": "Side Baby",
+    "image": "/assets/artistiImg/52.jpg"
+  },
+  {
+    "id": 53,
+    "name": "Disme",
+    "image": "/assets/artistiImg/53.jpg"
+  },
+  {
+    "id": 54,
+    "name": "Tony Effe",
+    "image": "/assets/artistiImg/54.jpg"
+  },
+  {
+    "id": 55,
+    "name": "Mezzosangue",
+    "image": "/assets/artistiImg/55.jpg"
+  },
+  {
+    "id": 56,
+    "name": "Rancore",
+    "image": "/assets/artistiImg/56.jpg"
+  },
+  {
+    "id": 57,
+    "name": "Nashley",
+    "image": "/assets/artistiImg/57.jpg"
+  },
+  {
+    "id": 58,
+    "name": "Night Skinny",
+    "image": "/assets/artistiImg/58.jpg"
+  },
+  {
+    "id": 59,
+    "name": "Mostro",
+    "image": "/assets/artistiImg/59.jpg"
+  },
+  {
+    "id": 60,
+    "name": "Il Tre",
+    "image": "/assets/artistiImg/60.jpg"
+  },
+  {
+    "id": 61,
+    "name": "Luchè",
+    "image": "/assets/artistiImg/61.jpg"
+  },
+  {
+    "id": 62,
+    "name": "Frenetik&Orange3",
+    "image": "/assets/artistiImg/62.jpg"
+  },
+  {
+    "id": 63,
+    "name": "Joan Thiele",
+    "image": "/assets/artistiImg/63.jpg"
+  },
+  {
+    "id": 64,
+    "name": "3D",
+    "image": "/assets/artistiImg/64.jpg"
+  },
+  {
+    "id": 65,
+    "name": "Ernia",
+    "image": "/assets/artistiImg/65.jpg"
+  },
+  {
+    "id": 66,
+    "name": "CoCo",
+    "image": "/assets/artistiImg/66.jpg"
+  },
+  {
+    "id": 67,
+    "name": "Tananai",
+    "image": "/assets/artistiImg/67.jpg"
+  },
+  {
+    "id": 68,
+    "name": "BLANCO",
+    "image": "/assets/artistiImg/68.jpg"
+  },
+  {
+    "id": 69,
+    "name": "Random",
+    "image": "/assets/artistiImg/69.jpg"
+  },
+  {
+    "id": 70,
+    "name": "Noyz Narcos",
+    "image": "/assets/artistiImg/70.jpg"
+  },
+  {
+    "id": 71,
+    "name": "Inoki",
+    "image": "/assets/artistiImg/71.jpg"
+  },
+  {
+    "id": 72,
+    "name": "Chiello",
+    "image": "/assets/artistiImg/72.jpg"
+  },
+  {
+    "id": 73,
+    "name": "Carl Brave",
+    "image": "/assets/artistiImg/73.jpg"
+  },
+  {
+    "id": 74,
+    "name": "Tredici Pietro",
+    "image": "/assets/artistiImg/74.jpg"
+  },
+  {
+    "id": 75,
+    "name": "Holden",
+    "image": "/assets/artistiImg/75.jpg"
+  },
+  {
+    "id": 76,
+    "name": "Murubutu",
+    "image": "/assets/artistiImg/76.jpg"
+  },
+  {
+    "id": 77,
+    "name": "Willie Peyote",
+    "image": "/assets/artistiImg/77.jpg"
+  },
+  {
+    "id": 78,
+    "name": "Coez",
+    "image": "/assets/artistiImg/78.jpg"
+  },
+  {
+    "id": 79,
+    "name": "Sick Luke",
+    "image": "/assets/artistiImg/79.jpg"
+  },
+  {
+    "id": 80,
+    "name": "MadMan",
+    "image": "/assets/artistiImg/80.jpg"
+  },
+  {
+    "id": 81,
+    "name": "Shiva",
+    "image": "/assets/artistiImg/81.jpg"
+  },
+  {
+    "id": 82,
+    "name": "Ariete",
+    "image": "/assets/artistiImg/82.jpg"
+  },
+  {
+    "id": 83,
+    "name": "Rkomi",
+    "image": "/assets/artistiImg/83.jpg"
+  },
+  {
+    "id": 84,
+    "name": "Jake La Furia",
+    "image": "/assets/artistiImg/84.jpg"
+  },
+  {
+    "id": 85,
+    "name": "Ensi",
+    "image": "/assets/artistiImg/85.jpg"
+  },
+  {
+    "id": 86,
+    "name": "Claver Gold",
+    "image": "/assets/artistiImg/86.jpg"
+  },
+  {
+    "id": 87,
+    "name": "Leon Faun",
+    "image": "/assets/artistiImg/87.jpg"
+  },
+  {
+    "id": 88,
+    "name": "Johnny Marsiglia",
+    "image": "/assets/artistiImg/88.jpg"
+  },
+  {
+    "id": 89,
+    "name": "Salmo",
+    "image": "/assets/artistiImg/89.jpg"
+  },
+  {
+    "id": 90,
+    "name": "Dardust",
+    "image": "/assets/artistiImg/90.jpg"
+  },
+  {
+    "id": 91,
+    "name": "Diss Gacha",
+    "image": "/assets/artistiImg/91.jpg"
+  },
+  {
+    "id": 92,
+    "name": "Psicologi",
+    "image": "/assets/artistiImg/92.jpg"
+  },
+  {
+    "id": 93,
+    "name": "Ultimo",
+    "image": "/assets/artistiImg/93.jpg"
+  },
+  {
+    "id": 94,
+    "name": "Artie 5ive",
+    "image": "/assets/artistiImg/94.jpg"
+  },
+  {
+    "id": 95,
+    "name": "Ele A",
+    "image": "/assets/artistiImg/95.jpg"
+  },
+  {
+    "id": 96,
+    "name": "Fasma",
+    "image": "/assets/artistiImg/96.jpg"
+  },
+  {
+    "id": 97,
+    "name": "Ghali",
+    "image": "/assets/artistiImg/97.jpg"
+  },
+  {
+    "id": 98,
+    "name": "Gianny Bismark",
+    "image": "/assets/artistiImg/98.jpg"
+  },
+  {
+    "id": 99,
+    "name": "Mahmood",
+    "image": "/assets/artistiImg/99.jpg"
+  },
+  {
+    "id": 100,
+    "name": "Quentin40",
+    "image": "/assets/artistiImg/100.jpg"
+  },
+  {
+    "id": 101,
+    "name": "VillaBanks",
+    "image": "/assets/artistiImg/101.jpg"
+  },
+  {
+    "id": 102,
+    "name": "Emis Killa",
+    "image": "/assets/artistiImg/102.jpg"
+  },
+  {
+    "id": 103,
+    "name": "Fedez",
+    "image": "/assets/artistiImg/103.jpg"
+  },
+  {
+    "id": 104,
+    "name": "FSK SATELLITE",
+    "image": "/assets/artistiImg/104.jpg"
+  },
+  {
+    "id": 105,
+    "name": "Franscesa Michelin",
+    "image": "/assets/artistiImg/105.jpg"
+  },
+  {
+    "id": 106,
+    "name": "Gallagher",
+    "image": "/assets/artistiImg/106.jpg"
+  },
+  {
+    "id": 107,
+    "name": "Tiziano Ferro",
+    "image": "/assets/artistiImg/107.jpg"
+  },
+  {
+    "id": 108,
+    "name": "Vasco Rossi",
+    "image": "/assets/artistiImg/108.jpg"
+  },
+  {
+    "id": 109,
+    "name": "Fabri Fibra",
+    "image": "/assets/artistiImg/109.jpg"
+  },
+  {
+    "id": 110,
+    "name": "Max Gazzé",
+    "image": "/assets/artistiImg/110.jpg"
+  },
+  {
+    "id": 111,
+    "name": "Gazzele",
+    "image": "/assets/artistiImg/111.jpg"
+  },
+  {
+    "id": 112,
+    "name": "Club dogo",
+    "image": "/assets/artistiImg/112.jpg"
+  },
+  {
+    "id": 113,
+    "name": "Noemi",
+    "image": "/assets/artistiImg/113.jpg"
+  },
+  {
+    "id": 114,
+    "name": "Abbate Federica",
+    "image": "/assets/artistiImg/114.jpg"
+  },
+  {
+    "id": 115,
+    "name": "Achille Lauro",
+    "image": "/assets/artistiImg/115.jpg"
+  },
+  {
+    "id": 116,
+    "name": "Don Joe",
+    "image": "/assets/artistiImg/116.jpg"
+  }
+]

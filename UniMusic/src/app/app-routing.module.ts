@@ -20,7 +20,8 @@ const routes: Routes = [
     path: 'registeredUsers',
     loadChildren: () => import('./registered-users/registered-users.module').then(m => m.RegisteredUsersModule),
     canActivate: [AuthGuard]
-  }
+  },
+  { path: 'UniMusicPlayer', loadChildren: () => import('./uni-music-player/uni-music-player.module').then(m => m.UniMusicPlayerModule) }
 ];
 
 @NgModule({

@@ -34,7 +34,7 @@ export class AuthService {
   }
 
 
-  resgisterUrl: string = environment.resgisterUrl;
+  resgisterUrl: string = environment.registerUrl;
   loginUrl: string = environment.loginUrl;
 
   register(newUser: Partial<IUser>): Observable<AccessData> {

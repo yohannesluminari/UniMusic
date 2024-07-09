@@ -90,4 +90,9 @@ export class AuthService {
   }
 
 
+  getCurrentUser(): IUser | null {
+    // Implement logic to fetch current user from wherever it is stored
+    // Example: You might have the current user in a behavior subject
+    return this.authSubject.value; // Assuming authSubject contains the current user
+  }
 }

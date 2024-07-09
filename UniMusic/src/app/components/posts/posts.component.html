@@ -1,1 +1,12 @@
-<p>posts works!</p>
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Titolo:</label>
+    <input type="text" id="title" formControlName="title" required>
+  </div>
+  <div>
+    <label for="content">Contenuto:</label>
+    <textarea id="content" formControlName="content" required></textarea>
+  </div>
+  <button type="submit">Crea Post</button>
+</form>
+

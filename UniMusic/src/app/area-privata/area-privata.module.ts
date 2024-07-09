@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AreaPrivataRoutingModule } from './area-privata-routing.module';
 import { AreaPrivataComponent } from './area-privata.component';
 import { PostsComponent } from '../components/posts/posts.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PostsComponent } from '../components/posts/posts.component';
   ],
   imports: [
     CommonModule,
-    AreaPrivataRoutingModule
+    AreaPrivataRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AreaPrivataModule { }

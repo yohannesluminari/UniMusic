@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { AreaPrivataRoutingModule } from './area-privata-routing.module';
 import { AreaPrivataComponent } from './area-privata.component';
+import { PostsComponent } from '../components/posts/posts.component';
 
 
 @NgModule({
   declarations: [
-    AreaPrivataComponent
+    AreaPrivataComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,

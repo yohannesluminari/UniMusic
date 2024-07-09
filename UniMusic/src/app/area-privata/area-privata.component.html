@@ -1,27 +1,134 @@
 <body>
   <div class="sidebar" [class.active]="isSidebarVisible">
     <a href="" class="logo">
-      <img src="/assets/UniMusic.png" alt="">
+      <img src="/assets/UniMusic.png" alt="" />
     </a>
     <!-- profile image -->
     <div class="profile">
       <div class="profile-img">
-        <img src="/assets/UniMusic.png" alt="">
+        <img src="/assets/UniMusic.png" alt="" />
       </div>
       <div class="name">
         <h1>Dua Lipa</h1>
-        <img src="/assets/UniMusic.png" alt="">
+        <img src="/assets/UniMusic.png" alt="" />
       </div>
       <span>Lipa</span>
+    </div>
+    <!-- about -->
+    <div class="about">
+      <!-- box 1 -->
+      <div class="box">
+        <h3>54</h3>
+        <span>Posts1</span>
+      </div>
+      <!-- box 2 -->
+      <div class="box">
+        <h3>14.4k</h3>
+        <span>Followers</span>
+      </div>
+      <!-- box 3 -->
+      <div class="box">
+        <h3>14</h3>
+        <span>Following</span>
+      </div>
+    </div>
+
+    <!-- menù -->
+    <div class="menu">
+      <a href="" class="active">
+        <span class="icon">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </span>
+        Feed
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Notification
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Messages
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Direct
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Stats
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Stats
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-search"></i>
+        </span>
+        Setting
+      </a>
+      <a href="">
+        <span class="icon">
+          <i class="bi bi-box-arrow-right"></i>
+        </span>
+        Logout
+      </a>
     </div>
   </div>
   <!-- main -->
   <div class="main-home">
+    <!-- header -->
+    <div class="header">
+      <!-- search -->
+      <div class="search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search" />
+      </div>
+      <!-- header-content -->
+      <div class="header-content">
+        <i class="bi bi-bell-fill"></i>
+        <i class="bi bi-chat"></i>
+        <!-- button add post-->
+        <a href="" class="btn">
+          <i class="bi bi-plus-square-fill"></i>
+          <div class="btn-text">Add Post</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- stories -->
+    <div class="stories-title">
+      <h1>Stories</h1>
+      <a href="" class="btn">
+        <i class="bi bi-circle"></i>
+        <div class="text">Watch All</div>
+      </a>
+    </div>
+
     <!-- icona x per siderbar show in smaprthpone -->
   </div>
   <div class="menu-icon" (click)="toggleSidebar()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="35"
+      height="35"
+      fill="currentColor"
+      class="bi bi-x-lg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+      />
     </svg>
   </div>
 </body>

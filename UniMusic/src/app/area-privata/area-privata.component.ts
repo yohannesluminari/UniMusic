@@ -9,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AreaPrivataComponent  {
 
+  isSidebarVisible: boolean = false;
 
+  toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
+  }
 }
 

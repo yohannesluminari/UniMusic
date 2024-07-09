@@ -1,12 +1,27 @@
 <body>
-  <div class="container">
-    <h1 class="text-white">Benvenuto </h1>
-    <div class="row">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita adipisci vel tempora harum neque aut magni, nam rem sint tenetur quasi, totam sit sed quibusdam possimus ratione alias. Rem, doloribus.
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate atque reiciendis fugit repellendus saepe totam voluptates cum reprehenderit. Omnis laborum animi voluptatibus provident quod sequi minus magni officia earum quae.
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae beatae odio distinctio maiores aperiam, veniam architecto molestiae eligendi illum iusto dolor vel soluta vero ipsum, odit nihil totam debitis
-</p>
-          </div>
-        </div>
-
+  <div class="sidebar" [class.active]="isSidebarVisible">
+    <a href="" class="logo">
+      <img src="/assets/UniMusic.png" alt="">
+    </a>
+    <!-- profile image -->
+    <div class="profile">
+      <div class="profile-img">
+        <img src="/assets/UniMusic.png" alt="">
+      </div>
+      <div class="name">
+        <h1>Dua Lipa</h1>
+        <img src="/assets/UniMusic.png" alt="">
+      </div>
+      <span>Lipa</span>
+    </div>
+  </div>
+  <!-- main -->
+  <div class="main-home">
+    <!-- icona x per siderbar show in smaprthpone -->
+  </div>
+  <div class="menu-icon" (click)="toggleSidebar()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+    </svg>
+  </div>
 </body>

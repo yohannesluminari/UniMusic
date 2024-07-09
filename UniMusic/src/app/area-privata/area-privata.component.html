@@ -1,18 +1,15 @@
 <body>
   <div class="sidebar" [class.active]="isSidebarVisible">
-    <a href="" class="logo">
-      <img src="/assets/UniMusic.png" alt="" />
-    </a>
     <!-- profile image -->
     <div class="profile">
       <div class="profile-img">
-        <img src="/assets/UniMusic.png" alt="" />
+        <img *ngIf="registerData.avatar" [src]="registerData.avatar" alt="Profile Image" />
       </div>
       <div class="name">
-        <h1>Dua Lipa</h1>
-        <img src="/assets/UniMusic.png" alt="" />
+        <h1>{{ registerData.username }}</h1>
+        <img *ngIf="registerData.avatar" [src]="registerData.avatar" alt="Avatar Image" />
       </div>
-      <span>Lipa</span>
+      <!-- <span>Lipa</span> -->
     </div>
     <!-- about -->
     <div class="about">
@@ -79,7 +76,7 @@
       </a>
       <a href="">
         <span class="icon">
-          <i class="bi bi-box-arrow-right"></i>
+          <li><button class="btn btn-danger" (click)="logout()">Logout</button></li>
         </span>
         Logout
       </a>

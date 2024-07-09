@@ -18,23 +18,22 @@ export class RegisterComponent {
   constructor(private authSvc:AuthService, private router:Router){}
 
   signUp() {
+    // Validazione dei campi richiesti
     if (!this.registerData.username || !this.registerData.email || !this.registerData.password) {
-
+      Object.keys(this.registerData).forEach(key => {
+        this.showError[key as keyof IUser] = !this.registerData[key as keyof IUser];
+      });
       return;
     }
-
     this.authSvc.register(this.registerData)
       .subscribe(data => {
         this.router.navigate(['/areaPrivata']);
       });
   }
-  checkEmpty(field: keyof IUser) {
-    if (this.registerData[field]) {
-      this.showError[field] = false;
-    } else {
-      this.showError[field] = true;
-    }
-  }
+ // Funzione per controllare se un campo è vuoto
+ checkEmpty(field: keyof IUser) {
+  this.showError[field] = !this.registerData[field];
+}
 
 
 }

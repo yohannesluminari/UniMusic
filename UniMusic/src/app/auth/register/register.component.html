@@ -11,9 +11,6 @@
       <input type="password" name="password" class="form-control" [(ngModel)]="registerData.password" placeholder="Password" (blur)="checkEmpty('password')">
       <div *ngIf="showError.password" class="alert alert-danger" role="alert">Il campo Password è obbligatorio.</div>
 
-      <input type="file" name="avatar" class="form-control" >
-      <div *ngIf="showError.avatar" class="alert alert-danger" role="alert"></div>
-
       <button type="button" class="btn btn-success" (click)="signUp()">Registrati</button>
     </form>
 

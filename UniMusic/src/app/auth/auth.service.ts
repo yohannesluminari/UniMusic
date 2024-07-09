@@ -19,6 +19,9 @@ export class AuthService {
   private users: IUser[] = [];
   jwtHelper: JwtHelperService = new JwtHelperService();
 
+  resgisterUrl: string = environment.registerUrl;
+  loginUrl: string = environment.loginUrl;
+
   authSubject = new BehaviorSubject<IUser | null>(null);
 
   user$ = this.authSubject.asObservable();
@@ -32,10 +35,6 @@ export class AuthService {
   constructor(private Http: HttpClient, private router: Router) {
     this.restoreUser();
   }
-
-
-  resgisterUrl: string = environment.registerUrl;
-  loginUrl: string = environment.loginUrl;
 
   register(newUser: Partial<IUser>): Observable<AccessData> {
     return this.Http.post<AccessData>(this.resgisterUrl, newUser);

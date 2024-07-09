@@ -8,8 +8,8 @@ export interface IUser {
   password: string;
   avatar: string | null;
   totalListeningTimeInMinutes: number;
-  mostListenedAlbum: Album | null; // Assicurati di importare correttamente Album
-  mostListenedArtist: Artist | null; // Assicurati di importare correttamente Artist
-  followers: IUser[]; // Puoi definire IUser o una versione semplificata se necessario
-  following: IUser[]; // Puoi definire IUser o una versione semplificata se necessario
+  mostListenedAlbum: Album | null;
+  mostListenedArtist: Artist | null;
+  followers: IUser[];
+  following: IUser[];
 }

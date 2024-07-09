@@ -11,6 +11,15 @@
       <input type="password" name="password" class="form-control" [(ngModel)]="registerData.password" placeholder="Password" (blur)="checkEmpty('password')">
       <div *ngIf="showError.password" class="alert alert-danger" role="alert">Il campo Password è obbligatorio.</div>
 
+       <!-- Campo Avatar -->
+    <div class="form-group">
+      <label for="avatar">Avatar</label>
+      <input type="file" class="form-control-file" id="avatar" (change)="handleAvatarInput($event)">
+      <!-- Anteprima dell'avatar -->
+      <img *ngIf="registerData.avatar" [src]="registerData.avatar" alt="Avatar Preview" class="img-thumbnail mt-2" style="max-width: 200px;">
+    </div>
+
+    
       <button type="button" class="btn btn-success" (click)="signUp()">Registrati</button>
     </form>
 

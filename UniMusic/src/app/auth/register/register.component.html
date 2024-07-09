@@ -2,15 +2,22 @@
 <body>
   <div id="Container" class="container">
     <form class="form">
-      <input type="text" name="username" class="form-control" [(ngModel)]="registerData.username" placeholder="Username">
+      <input type="text" name="username" class="form-control" [(ngModel)]="registerData.username" placeholder="Username" (blur)="checkEmpty('username')">
+      <div *ngIf="showError.username" class="alert alert-danger" role="alert">Il campo Username è obbligatorio.</div>
 
-        <input type="email" name="email" class="form-control" [(ngModel)]="registerData.email" placeholder="Email" (blur)="checkEmpty('email')">
-        <div *ngIf="showError.email && !registerData.email" class="alert alert-danger" role="alert">Il campo Email è obbligatorio.</div>
+      <input type="email" name="email" class="form-control" [(ngModel)]="registerData.email" placeholder="Email" (blur)="checkEmpty('email')">
+      <div *ngIf="showError.email" class="alert alert-danger" role="alert">Il campo Email è obbligatorio.</div>
 
-        <input type="password" name="password" class="form-control" [(ngModel)]="registerData.password" placeholder="Password" (blur)="checkEmpty('password')">
-        <div *ngIf="showError.password && !registerData.password" class="alert alert-danger" role="alert">Il campo Password è obbligatorio.</div>
-        <button class="btn btn-success" (click)="signUp()">Registrati</button>
+      <input type="password" name="password" class="form-control" [(ngModel)]="registerData.password" placeholder="Password" (blur)="checkEmpty('password')">
+      <div *ngIf="showError.password" class="alert alert-danger" role="alert">Il campo Password è obbligatorio.</div>
+
+      <input type="file" name="avatar" class="form-control" >
+      <div *ngIf="showError.avatar" class="alert alert-danger" role="alert"></div>
+
+      <button type="button" class="btn btn-success" (click)="signUp()">Registrati</button>
     </form>
+
+
 
     <div id="rays">
       <svg

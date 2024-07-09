@@ -35,4 +35,6 @@ export class RegisterComponent {
       this.showError[field] = true;
     }
   }
+
+
 }

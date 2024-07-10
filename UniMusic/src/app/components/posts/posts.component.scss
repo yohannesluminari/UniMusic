@@ -21,3 +21,15 @@
   text-align: center; /* Centra il testo orizzontalmente */
   flex-grow: 1; /* Per far crescere il contenuto e centrare verticalmente */
 }
+.card-img-top {
+  height: 200px; /* Altezza desiderata per l'immagine */
+  width: 100%; /* Larghezza al 100% per adattarsi alla card */
+  object-fit: cover; /* Scala l'immagine per coprire l'intera area mantenendo l'aspetto */
+  object-position: center center; /* Posiziona l'immagine al centro sia orizzontalmente che verticalmente */
+  border-radius: 0.5rem 0.5rem 0 0; /* Arrotondamento dei bordi superiori */
+}
+
+.card{
+  width: 300px;
+  height: 300px;
+}

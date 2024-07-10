@@ -294,27 +294,78 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 11px;
 }
-/* Stile per le cards dei post */
+/* Stile per il contenitore dei post */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra gli elementi orizzontalmente */
+  margin-top: 4rem; /* Spazio superiore tra l'header e i post */
+}
+
+/* Stile per la card dei post */
 .card {
-  max-width: 100%; /* Larghezza massima del 100% del contenitore */
-  max-height: 400px; /* Altezza massima delle cards */
+  width: 300px; /* Larghezza fissa per le cards dei post */
+  background-color: #ffffff; /* Colore di sfondo bianco per la card */
+  border-radius: 10px; /* Bordi arrotondati */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  transition: transform 0.3s ease; /* Transizione animata */
+  margin: 0 1rem 2rem; /* Margine intorno alle cards */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Effetto di alzamento su hover */
 }
 
 /* Stile per l'immagine della card */
 .card-img-top {
-  height: 300px;
-  width: 300px;
+  height: 300px; /* Altezza dell'immagine della card */
+  width: 300px; /* Larghezza al 100% della card */
+  object-fit: cover; /* Immagine coperta per riempire lo spazio */
+  border-top-left-radius: 10px; /* Arrotondamento bordi superiori */
+  border-top-right-radius: 10px;
 }
 
 /* Stile per il contenuto della card */
 .card-body {
-  padding: 10px; /* Padding interno del corpo della card */
+  padding: 1rem; /* Padding interno del corpo della card */
 }
 
 /* Media query per rendere le cards responsive */
 @media (max-width: 768px) {
+  .row {
+    margin-top: 2rem; /* Riduce lo spazio superiore sui dispositivi più piccoli */
+  }
+
   .col-md-4 {
     flex: 0 0 100%; /* Larghezza del 100% su schermi di larghezza <= 768px */
     max-width: 100%; /* Larghezza massima del 100% */
+  }
+
+  .card {
+    width: calc(100% - 2rem); /* Larghezza calcolata per adattarsi allo spazio disponibile */
+    margin: 0 auto 2rem; /* Margine aggiustato per centrare le cards */
+  }
+}
+/* Media query per schermi tra 767px e 1291px */
+@media (max-width: 1291px) and (min-width: 767px) {
+  .row {
+    justify-content: space-between; /* Spaziatura uniforme tra le cards */
+    flex-wrap: wrap; /* Wrap delle cards quando lo spazio è insufficiente */
+  }
+
+  .col-md-4 {
+    flex: 0 0 calc(50% - 1rem); /* Larghezza delle colonne al 50% dello spazio disponibile */
+    max-width: calc(50% - 1rem); /* Larghezza massima delle colonne */
+    margin-bottom: 2rem; /* Margine inferiore per separare le cards */
+  }
+}
+
+/* Media query per schermi inferiori a 930px */
+@media (max-width: 930px) {
+  .col-md-4 {
+    flex: 0 0 100%; /* Occupa l'intera larghezza disponibile */
+    max-width: 100%; /* Larghezza massima del 100% */
+    margin-bottom: 2rem; /* Margine inferiore per separare le cards */
+    text-align: center; /* Centratura del contenuto */
   }
 }

@@ -16,6 +16,7 @@ export class PostsComponent {
   createdPost: Post | null = null;
   imagePreview: string | null = null;
   posts: Post[] = []; // Array per memorizzare tutti i post
+  showPostForm = false; // Variabile per gestire la visibilità del form di creazione
 
   constructor(
     private fb: FormBuilder,
@@ -96,5 +97,9 @@ export class PostsComponent {
       this.imagePreview = reader.result as string;
     };
     reader.readAsDataURL(file);
+  }
+  
+  togglePostForm() {
+    this.showPostForm = !this.showPostForm;
   }
 }

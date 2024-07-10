@@ -1,5 +1,7 @@
 <div class="container">
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <button (click)="togglePostForm()" class="btn btn-primary mt-3 mb-3">Add Post</button>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" *ngIf="showPostForm">
     <div class="form-group">
       <label for="title">Titolo:</label>
       <input type="text" id="title" class="form-control" formControlName="title" required>

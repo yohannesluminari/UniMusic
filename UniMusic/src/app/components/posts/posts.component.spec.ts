@@ -11,7 +11,7 @@ describe('PostsComponent', () => {
       declarations: [PostsComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PostsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

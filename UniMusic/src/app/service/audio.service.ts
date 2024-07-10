@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AudioService {
   audio: HTMLAudioElement | null = null;
+  getCurrentUser: any;
 
   play(audioSrc: string): void {
     // Se c'è un audio in riproduzione, interrompilo prima di riprodurre il nuovo audio

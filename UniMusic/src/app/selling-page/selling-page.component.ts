@@ -1,7 +1,9 @@
+import { AudioService } from './../service/audio.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Item } from '../models/Item';
 import { ItemsService } from '../service/items.service';
+import { IUser } from '../models/i-user';
 
 @Component({
   selector: 'app-selling-page',
@@ -13,10 +15,12 @@ export class SellingPageComponent {
   imagePreview: string | null = null;
   items: Item[] = [];
   showItemForm = false;
+  currentUser: IUser | null = null;
 
   constructor(
     private fb: FormBuilder,
-    private itemService: ItemsService
+    private itemService: ItemsService,
+    private authService: AudioService
   ) {}
 
   ngOnInit(): void {
@@ -28,6 +32,7 @@ export class SellingPageComponent {
       image: ['']
     });
 
+    this.currentUser = this.authService.getCurrentUser();
     this.loadItems();
   }
 
@@ -43,7 +48,7 @@ export class SellingPageComponent {
   }
 
   onSubmit() {
-    if (this.itemForm.valid) {
+    if (this.itemForm.valid && this.currentUser) {
       const formData = this.itemForm.value;
 
       const newItem: Partial<Item> = {
@@ -52,7 +57,7 @@ export class SellingPageComponent {
         available: formData.available,
         price: formData.price,
         createdAt: new Date(),
-        user: { id: 'example_user_id', username: 'example_username', email: 'example@email.com', password: 'example_password', avatar: null, totalListeningTimeInMinutes: 0, mostListenedAlbum: null, mostListenedArtist: null, followers: [], following: [] },
+        userId: this.currentUser.id,
         image: this.imagePreview,
         buyer: null,
         sold: false
@@ -70,6 +75,7 @@ export class SellingPageComponent {
 
       this.itemForm.reset();
       this.imagePreview = null;
+      this.showItemForm = false; // Nasconde il form dopo la creazione dell'item
     }
   }
 
@@ -135,5 +141,6 @@ export class SellingPageComponent {
 
   toggleItemForm() {
     this.showItemForm = !this.showItemForm;
+    console.log('showItemForm:', this.showItemForm);
   }
 }

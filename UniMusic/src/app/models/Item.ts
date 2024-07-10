@@ -10,6 +10,7 @@ export interface Item {
   price: number;
   createdAt: Date; // Assuming it's a Date object
   user: IUser;
+  userId: string;
   image: string | null;
   buyer: IUser | null;
   sold: boolean;

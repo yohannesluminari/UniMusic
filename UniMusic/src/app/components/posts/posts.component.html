@@ -1,12 +1,32 @@
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="title">Titolo:</label>
-    <input type="text" id="title" formControlName="title" required>
-  </div>
-  <div>
-    <label for="content">Contenuto:</label>
-    <textarea id="content" formControlName="content" required></textarea>
-  </div>
-  <button type="submit">Crea Post</button>
-</form>
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Titolo:</label>
+      <input type="text" id="title" class="form-control" formControlName="title" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Contenuto:</label>
+      <textarea id="content" class="form-control" formControlName="content" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="image">Immagine:</label>
+      <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*">
+      <!-- Mostra l'anteprima dell'immagine se disponibile -->
+      <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
+    </div>
+    <button type="submit" class="btn btn-primary">Crea Post</button>
+  </form>
 
+  <div class="row mt-4">
+    <div *ngFor="let post of posts" class="col-md-4 mb-4">
+      <div class="card">
+        <img *ngIf="post.image" [src]="post.image" class="card-img-top" alt="Post Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

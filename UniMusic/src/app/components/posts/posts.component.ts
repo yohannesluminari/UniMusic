@@ -11,23 +11,40 @@ import { IUser } from '../../models/i-user';
   styleUrl: './posts.component.scss'
 })
 export class PostsComponent {
-  postForm!: FormGroup; // Use '!' to tell TypeScript that this will be initialized in the constructor
+  postForm!: FormGroup;
   currentUser: IUser | null = null;
+  createdPost: Post | null = null;
+  imagePreview: string | null = null;
+  posts: Post[] = []; // Array per memorizzare tutti i post
 
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private authService: AuthService // Import your user service if needed
-  ) { }
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
       title: ['', Validators.required],
-      content: ['', Validators.required],
-      // Add more form controls as needed
+      content: ['', Validators.required]
     });
 
-    this.currentUser = this.authService.getCurrentUser(); // Fetch current user if needed
+    this.currentUser = this.authService.getCurrentUser();
+    this.loadPosts(); // Carica i post all'inizio
+  }
+
+  loadPosts() {
+    if (this.currentUser) {
+      this.postService.getAllPosts().subscribe(
+        (posts) => {
+          this.posts = posts.filter(post => post.userId === this.currentUser!.id); // Filtra solo i post dell'utente corrente
+        },
+        (error) => {
+          console.error('Errore durante il recupero dei post:', error);
+          // Gestisci l'errore come necessario
+        }
+      );
+    }
   }
 
   onSubmit() {
@@ -38,23 +55,46 @@ export class PostsComponent {
         title: formData.title,
         content: formData.content,
         createdAt: new Date(),
-        userId: this.currentUser.id, // Save only the user ID
+        userId: this.currentUser.id,
         rating: null,
-        image: null
+        image: this.imagePreview
       };
 
       this.postService.createPost(newPost).subscribe(
         (createdPost) => {
-          console.log('Post created successfully:', createdPost);
-          // Handle success as needed
+          console.log('Post creato con successo:', createdPost);
+          this.createdPost = createdPost;
+          this.loadPosts(); // Aggiorna la lista dei post dopo la creazione di un nuovo post
         },
         (error) => {
-          console.error('Error creating post:', error);
-          // Handle error as needed
+          console.error('Errore durante la creazione del post:', error);
+          // Gestisci l'errore come necessario
         }
       );
 
       this.postForm.reset();
+      this.imagePreview = null;
     }
+  }
+
+  deletePost(post: Post) {
+    // Implementa la logica per eliminare il post
+  }
+
+  handleImageInput(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+
+    if (file) {
+      this.compressImage(file);
+    }
+  }
+
+  compressImage(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 }

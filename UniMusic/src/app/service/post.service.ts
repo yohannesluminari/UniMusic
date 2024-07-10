@@ -17,4 +17,8 @@ export class PostService {
   createPost(newPost: Partial<Post>): Observable<Post> {
     return this.http.post<Post>(this.postUrl, newPost);
   }
+
+  getAllPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.postUrl);
+  }
 }

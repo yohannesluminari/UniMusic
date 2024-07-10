@@ -294,56 +294,27 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 11px;
 }
-.post-box {
-  width: 300px;
-}
-.post-box img{
-  width: 100%;
-  height: 344px;
-  object-fit: cover;
-  border-radius: 0.5rem;
+/* Stile per le cards dei post */
+.card {
+  max-width: 100%; /* Larghezza massima del 100% del contenitore */
+  max-height: 400px; /* Altezza massima delle cards */
 }
 
-.post-info{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Stile per l'immagine della card */
+.card-img-top {
+  max-width: 100%; /* Larghezza massima del 100% dell'immagine */
+  height: auto; /* Altezza automatica in base all'immagine */
 }
 
-.post-img{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border: 2px solid #e2336b;
-  border-radius: 50%;
-  img{
-    width: 27px;
-    height: 27px;
-    object-fit: cover;
-    border-radius: 50%;
-    object-position: center;
-  }
+/* Stile per il contenuto della card */
+.card-body {
+  padding: 10px; /* Padding interno del corpo della card */
 }
-.post-profile{
-  display: flex;
-  align-items: center;
-  h3{
-    font-size: 12px;
-    font-weight: 600px;
-    margin-left: 5px;
-  }
-}
-.likes{
-  display: flex;
-  align-items: center;
-  i{
-    font-size: 20px;
-    margin-left: 10px;
-  }
-  span{
-    font-size: 14px;
-    margin-left: 7px;
+
+/* Media query per rendere le cards responsive */
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 100%; /* Larghezza del 100% su schermi di larghezza <= 768px */
+    max-width: 100%; /* Larghezza massima del 100% */
   }
 }

@@ -20,15 +20,17 @@
   </form>
 <!--
   POST DELLO USER CREATI -->
-  <div  class="row mt-4">
-    <div *ngFor="let post of posts" class="col-md-4 mb-4">
-      <div class="card h-100"> <!-- Aggiunta della classe h-100 per mantenere le card della stessa altezza -->
-        <img *ngIf="post.image" [src]="post.image" class="card-img-top" alt="Post Image">
-        <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">{{ post.content }}</p>
-          <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
-        </div>
+<!-- POST DELLO USER CREATI -->
+<div class="row mt-4 post-container">
+  <h1>Your Posts</h1>
+  <div *ngFor="let post of posts" class="col-md-4 mb-4">
+    <div class="card h-100 post-card">
+      <img *ngIf="post.image" [src]="post.image" class="card-img-top" alt="Post Image">
+      <div class="card-body post-content">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content }}</p>
+        <p class="card-text"><small class="text-muted">Created: {{ post.createdAt | date:'medium' }}</small></p>
+        <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
       </div>
     </div>
   </div>

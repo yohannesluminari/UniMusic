@@ -167,81 +167,22 @@
     </div>
 
     <!-- posts -->
-    <div class="main-posts">
-      <!-- box 1 -->
-      <div class="post-box">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-        <div class="post-info">
-          <div class="post-profile">
-            <div class="post-img">
-              <img src="/assets/profilePic/yl.jpg" alt="" />
-            </div>
-            <h3>Yohannes</h3>
-          </div>
-          <div class="likes">
-            <i class="bi bi-heart"></i>
-            <span>84.4</span>
-            <i class="bi bi-chat"></i>
-            <span>88</span>
-          </div>
-        </div>
-      </div>
-      <!-- box 2 -->
-      <div class="post-box">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-        <div class="post-info">
-          <div class="post-profile">
-            <div class="post-img">
-              <img src="/assets/profilePic/yl.jpg" alt="" />
-            </div>
-            <h3>Yohannes</h3>
-          </div>
-          <div class="likes">
-            <i class="bi bi-heart"></i>
-            <span>84.4</span>
-            <i class="bi bi-chat"></i>
-            <span>88</span>
-          </div>
-        </div>
-      </div>
+    <!-- Itera sui post e mostra ciascun post in una card -->
 
-      <!-- box 3 -->
-      <div class="post-box">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-        <div class="post-info">
-          <div class="post-profile">
-            <div class="post-img">
-              <img src="/assets/profilePic/yl.jpg" alt="" />
-            </div>
-            <h3>Yohannes</h3>
-          </div>
-          <div class="likes">
-            <i class="bi bi-heart"></i>
-            <span>84.4</span>
-            <i class="bi bi-chat"></i>
-            <span>88</span>
-          </div>
-        </div>
-      </div>
-      <!-- box 3 -->
-      <div class="post-box">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-        <div class="post-info">
-          <div class="post-profile">
-            <div class="post-img">
-              <img src="/assets/profilePic/yl.jpg" alt="" />
-            </div>
-            <h3>Yohannes</h3>
-          </div>
-          <div class="likes">
-            <i class="bi bi-heart"></i>
-            <span>84.4</span>
-            <i class="bi bi-chat"></i>
-            <span>88</span>
-          </div>
+  <div class="row mt-4">
+    <div *ngFor="let post of posts" class="col-md-4 mb-4 mx-2">
+      <div>
+        <img *ngIf="post.image" [src]="post.image" class="card-img-top" alt="Post Image">
+        <div class="card-body my-1">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text"><small class="text-muted">Created: {{ post.createdAt | date:'medium' }}</small></p>
         </div>
       </div>
     </div>
+  </div>
+
+
 <!-- perosnal post -->
 <app-posts *ngIf="isPostFormVisible"></app-posts>
     <!-- icona x per siderbar show in smaprthpone -->

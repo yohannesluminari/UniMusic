@@ -1,6 +1,8 @@
+import { PostService } from './../service/post.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../models/i-user';
+import { Post } from '../models/Post';
 
 
 
@@ -13,6 +15,7 @@ export class AreaPrivataComponent  {
   isUserLoggedIn:boolean = false
   isSidebarVisible: boolean = false;
   isPostFormVisible: boolean = true; // Stato iniziale: la card di creazione post non è visibile
+  posts: Post[] = []; // Array per memorizzare i post degli utenti
 
 
   toggleSidebar() {
@@ -20,7 +23,7 @@ export class AreaPrivataComponent  {
   }
   registerData: Partial<IUser> = {}; // Per conservare i dati dell'utente
 
-  constructor(private authSvc: AuthService) {}
+  constructor(private authSvc: AuthService, private postService: PostService) {}
 
   ngOnInit(): void {
     // Recupera i dati dell'utente al momento dell'inizializzazione del componente
@@ -32,8 +35,21 @@ export class AreaPrivataComponent  {
     this.authSvc.isLoggedIn$.subscribe(data => {
       this.isUserLoggedIn  = data
     })
+    this.loadPosts();
   }
 
+  loadPosts() {
+    // Chiamata al servizio per ottenere i post
+    this.postService.getAllPosts().subscribe(
+      (posts) => {
+        this.posts = posts; // Assegna i post recuperati alla variabile locale
+      },
+      (error) => {
+        console.error('Errore durante il recupero dei post:', error);
+        // Gestisci l'errore come necessario
+      }
+    );
+  }
   logout(){
     this.authSvc.logout()
   }

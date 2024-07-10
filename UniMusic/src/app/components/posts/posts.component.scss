@@ -1,2 +1,23 @@
+.post-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
 
+.post-container h1 {
+  width: 100%;
+  text-align: center;
+}
 
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuisce gli elementi verticalmente */
+  height: 100%; /* Altezza del 100% per riempire l'intera altezza della card */
+}
+
+.post-content {
+  text-align: center; /* Centra il testo orizzontalmente */
+  flex-grow: 1; /* Per far crescere il contenuto e centrare verticalmente */
+}

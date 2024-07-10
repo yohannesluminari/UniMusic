@@ -6,10 +6,10 @@ export interface Item {
   id: number;
   title: string;
   description: string;
-  available: boolean; // Modifica da string a boolean
+  available: boolean;
   price: number;
   createdAt: Date;
-  user: IUser;
+  user: IUser; // Aggiunto campo user di tipo IUser
   userId: string;
   image: string | null;
   buyer: IUser | null;

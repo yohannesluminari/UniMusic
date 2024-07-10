@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Item } from '../models/Item';
 import { ItemsService } from '../service/items.service';
 import { IUser } from '../models/i-user';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-selling-page',
@@ -15,11 +16,12 @@ export class SellingPageComponent {
   imagePreview: string | null = null;
   items: Item[] = [];
   showItemForm = false;
+  currentUser: IUser | null = null;
 
   constructor(
     private fb: FormBuilder,
     private itemService: ItemsService,
-    private authService: AudioService
+    private authService: AuthService // Inject AuthService per ottenere il currentUser
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class SellingPageComponent {
     });
 
     this.loadItems();
+    this.currentUser = this.authService.getCurrentUser(); // Ottieni il currentUser dal AuthService
   }
 
   loadItems() {
@@ -46,7 +49,7 @@ export class SellingPageComponent {
   }
 
   onSubmit() {
-    if (this.itemForm.valid) {
+    if (this.itemForm.valid && this.currentUser) {
       const formData = this.itemForm.value;
 
       const newItem: Partial<Item> = {
@@ -55,6 +58,7 @@ export class SellingPageComponent {
         available: formData.available,
         price: formData.price,
         createdAt: new Date(),
+        userId: this.currentUser.id, // Salvare solo l'id dell'utente
         image: this.imagePreview,
         buyer: null,
         sold: false

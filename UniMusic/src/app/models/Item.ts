@@ -2,10 +2,6 @@
 
 import { IUser } from "./i-user";
 
-
-
-
-
 export interface Item {
   id: number;
   title: string;

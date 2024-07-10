@@ -15,8 +15,8 @@ export class PostsComponent {
   currentUser: IUser | null = null;
   createdPost: Post | null = null;
   imagePreview: string | null = null;
-  posts: Post[] = []; // Array per memorizzare tutti i post
-  showPostForm = false; // Variabile per gestire la visibilità del form di creazione
+  posts: Post[] = [];
+  showPostForm = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,18 +31,18 @@ export class PostsComponent {
     });
 
     this.currentUser = this.authService.getCurrentUser();
-    this.loadPosts(); // Carica i post all'inizio
+    this.loadPosts();
   }
 
   loadPosts() {
     if (this.currentUser) {
       this.postService.getAllPosts().subscribe(
         (posts) => {
-          this.posts = posts.filter(post => post.userId === this.currentUser!.id); // Filtra solo i post dell'utente corrente
+          this.posts = posts.filter(post => post.userId === this.currentUser!.id);
         },
         (error) => {
-          console.error('Errore durante il recupero dei post:', error);
-          // Gestisci l'errore come necessario
+          console.error('Error fetching posts:', error);
+          // Handle error as needed
         }
       );
     }
@@ -63,13 +63,13 @@ export class PostsComponent {
 
       this.postService.createPost(newPost).subscribe(
         (createdPost) => {
-          console.log('Post creato con successo:', createdPost);
+          console.log('Post created successfully:', createdPost);
           this.createdPost = createdPost;
-          this.loadPosts(); // Aggiorna la lista dei post dopo la creazione di un nuovo post
+          this.loadPosts(); // Refresh the posts list after creating a new post
         },
         (error) => {
-          console.error('Errore durante la creazione del post:', error);
-          // Gestisci l'errore come necessario
+          console.error('Error creating post:', error);
+          // Handle error as needed
         }
       );
 
@@ -79,7 +79,7 @@ export class PostsComponent {
   }
 
   deletePost(post: Post) {
-    // Implementa la logica per eliminare il post
+    // Implement logic to delete the post
   }
 
   handleImageInput(event: Event) {
@@ -94,11 +94,42 @@ export class PostsComponent {
   compressImage(file: File) {
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result as string;
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const maxWidth = 200; // Set maximum width of the image
+        const maxHeight = 200; // Set maximum height of the image
+
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        ctx?.drawImage(img, 0, 0, width, height);
+
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7); // JPEG quality of 70%
+
+        this.imagePreview = compressedBase64; // Assign the compressed image to imagePreview
+      };
+      img.src = reader.result as string;
     };
     reader.readAsDataURL(file);
   }
-  
+
   togglePostForm() {
     this.showPostForm = !this.showPostForm;
   }

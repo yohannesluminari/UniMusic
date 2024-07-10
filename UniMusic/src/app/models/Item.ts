@@ -6,9 +6,9 @@ export interface Item {
   id: number;
   title: string;
   description: string;
-  available: string;
+  available: boolean; // Modifica da string a boolean
   price: number;
-  createdAt: Date; // Assuming it's a Date object
+  createdAt: Date;
   user: IUser;
   userId: string;
   image: string | null;

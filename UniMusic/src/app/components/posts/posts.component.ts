@@ -42,7 +42,6 @@ export class PostsComponent {
         },
         (error) => {
           console.error('Error fetching posts:', error);
-          // Handle error as needed
         }
       );
     }
@@ -65,11 +64,10 @@ export class PostsComponent {
         (createdPost) => {
           console.log('Post created successfully:', createdPost);
           this.createdPost = createdPost;
-          this.loadPosts(); // Refresh the posts list after creating a new post
+          this.loadPosts();
         },
         (error) => {
           console.error('Error creating post:', error);
-          // Handle error as needed
         }
       );
 
@@ -79,7 +77,6 @@ export class PostsComponent {
   }
 
   deletePost(post: Post) {
-    // Implement logic to delete the post
   }
 
   handleImageInput(event: Event) {
@@ -98,8 +95,8 @@ export class PostsComponent {
       img.onload = () => {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        const maxWidth = 200; // Set maximum width of the image
-        const maxHeight = 200; // Set maximum height of the image
+        const maxWidth = 200;
+        const maxHeight = 200;
 
         let width = img.width;
         let height = img.height;
@@ -121,9 +118,9 @@ export class PostsComponent {
 
         ctx?.drawImage(img, 0, 0, width, height);
 
-        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7); // JPEG quality of 70%
+        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
 
-        this.imagePreview = compressedBase64; // Assign the compressed image to imagePreview
+        this.imagePreview = compressedBase64;
       };
       img.src = reader.result as string;
     };

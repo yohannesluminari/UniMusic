@@ -15,7 +15,6 @@ export class SellingPageComponent {
   imagePreview: string | null = null;
   items: Item[] = [];
   showItemForm = false;
-  currentUser: IUser | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -32,7 +31,6 @@ export class SellingPageComponent {
       image: ['']
     });
 
-    this.currentUser = this.authService.getCurrentUser();
     this.loadItems();
   }
 
@@ -48,7 +46,7 @@ export class SellingPageComponent {
   }
 
   onSubmit() {
-    if (this.itemForm.valid && this.currentUser) {
+    if (this.itemForm.valid) {
       const formData = this.itemForm.value;
 
       const newItem: Partial<Item> = {
@@ -57,7 +55,6 @@ export class SellingPageComponent {
         available: formData.available,
         price: formData.price,
         createdAt: new Date(),
-        userId: this.currentUser.id,
         image: this.imagePreview,
         buyer: null,
         sold: false

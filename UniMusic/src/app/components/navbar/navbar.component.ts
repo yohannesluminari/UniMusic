@@ -18,8 +18,14 @@ export class NavbarComponent {
       this.isUserLoggedIn  = data
     })
   }
+
   toggleNavbar(): void {
     this.showNavbar = !this.showNavbar;
+  }
+
+  // Chiudi il dropdown quando si seleziona un link diretto
+  closeNavbar(): void {
+    this.showNavbar = false;
   }
 
   logout(){

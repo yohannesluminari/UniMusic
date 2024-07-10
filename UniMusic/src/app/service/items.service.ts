@@ -25,4 +25,14 @@ export class ItemsService {
   deleteItem(itemId: number): Observable<void> {
     return this.http.delete<void>(`${this.itemUrl}/${itemId}`);
   }
+
+  // Modifica un item esistente
+  updateItem(itemId: number, updatedItem: Partial<Item>): Observable<Item> {
+    return this.http.put<Item>(`${this.itemUrl}/${itemId}`, updatedItem);
+  }
+
+   // Ottiene un singolo item per ID
+   getItemById(itemId: number): Observable<Item> {
+    return this.http.get<Item>(`${this.itemUrl}/${itemId}`);
+  }
 }

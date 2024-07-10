@@ -77,36 +77,6 @@
     </div>
   </section>
 
-  <section class="container" *ngIf="showItemForm">
-    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" class="form-control" formControlName="title" required>
-      </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" class="form-control" formControlName="description" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="available">Available:</label>
-        <select id="available" class="form-control" formControlName="available" required>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" id="price" class="form-control" formControlName="price" required>
-      </div>
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*">
-        <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
-      </div>
-      <button type="submit" class="btn btn-primary">Create Item</button>
-    </form>
-  </section>
-
   <div class="container">
     <div class="row mt-4">
       <div *ngFor="let item of items" class="col-md-4 mb-4 item-card">
@@ -117,10 +87,49 @@
             <p class="card-text">{{ item.description }}</p>
             <p class="card-text">Price: {{ item.price }}</p>
             <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-            <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+
+            <!-- Pulsanti per Edit e Delete -->
+            <div *ngIf="editingItemId !== item.id">
+              <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+              <button class="btn btn-primary ms-2" (click)="startEditItem(item)">Edit</button>
+            </div>
+
+            <!-- Form per la modifica dell'item -->
+            <form [formGroup]="itemForm" *ngIf="editingItemId === item.id" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="form-control" formControlName="title" required>
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" class="form-control" formControlName="description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="available">Available:</label>
+                <select id="available" class="form-control" formControlName="available" required>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" class="form-control" formControlName="price" required>
+              </div>
+              <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" id="image" (change)="handleImageInput($event)" class="form-control">
+              </div>
+              <div class="form-group">
+                <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid" alt="Preview">
+              </div>
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="cancelEditItem()">Cancel</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
 </body>

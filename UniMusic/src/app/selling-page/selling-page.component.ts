@@ -9,7 +9,7 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-selling-page',
   templateUrl: './selling-page.component.html',
-  styleUrl: './selling-page.component.scss'
+  styleUrl: './selling-page.component.scss',
 })
 export class SellingPageComponent {
   itemForm!: FormGroup;
@@ -17,6 +17,7 @@ export class SellingPageComponent {
   items: Item[] = [];
   showItemForm = false;
   currentUser: IUser | null = null;
+  editingItemId: number | null = null; // ID dell'item in modifica
 
   constructor(
     private fb: FormBuilder,
@@ -64,19 +65,31 @@ export class SellingPageComponent {
         sold: false
       };
 
-      this.itemService.createItem(newItem).subscribe(
-        (createdItem) => {
-          console.log('Item created successfully:', createdItem);
-          this.loadItems();
-        },
-        (error) => {
-          console.error('Error creating item:', error);
-        }
-      );
-
-      this.itemForm.reset();
-      this.imagePreview = null;
-      this.showItemForm = false; // Nasconde il form dopo la creazione dell'item
+      if (this.editingItemId) {
+        // Se stiamo modificando un item esistente
+        this.itemService.updateItem(this.editingItemId, newItem).subscribe(
+          (updatedItem) => {
+            console.log('Item updated successfully:', updatedItem);
+            this.loadItems(); // Ricarica gli items dopo l'aggiornamento
+            this.cancelEditItem(); // Chiudi il form di modifica
+          },
+          (error) => {
+            console.error('Error updating item:', error);
+          }
+        );
+      } else {
+        // Altrimenti, creiamo un nuovo item
+        this.itemService.createItem(newItem).subscribe(
+          (createdItem) => {
+            console.log('Item created successfully:', createdItem);
+            this.loadItems(); // Ricarica gli items dopo la creazione
+            this.cancelEditItem(); // Chiudi il form di creazione
+          },
+          (error) => {
+            console.error('Error creating item:', error);
+          }
+        );
+      }
     }
   }
 
@@ -84,7 +97,7 @@ export class SellingPageComponent {
     this.itemService.deleteItem(item.id).subscribe(
       () => {
         console.log('Item deleted successfully');
-        this.loadItems();
+        this.loadItems(); // Ricarica gli items dopo l'eliminazione
       },
       (error) => {
         console.error('Error deleting item:', error);
@@ -143,5 +156,33 @@ export class SellingPageComponent {
   toggleItemForm() {
     this.showItemForm = !this.showItemForm;
     console.log('showItemForm:', this.showItemForm);
+  }
+
+  // Metodo per avviare la modifica di un item
+  startEditItem(item: Item) {
+    this.editingItemId = item.id;
+    this.itemService.getItemById(item.id).subscribe(
+      (itemDetails) => {
+        this.itemForm.patchValue({
+          title: itemDetails.title,
+          description: itemDetails.description,
+          available: itemDetails.available,
+          price: itemDetails.price
+        });
+        this.imagePreview = itemDetails.image; // Visualizza l'immagine esistente dell'item
+        this.showItemForm = true; // Mostra il form di modifica
+      },
+      (error) => {
+        console.error('Error fetching item details:', error);
+      }
+    );
+  }
+
+  // Metodo per annullare la modifica di un item
+  cancelEditItem() {
+    this.editingItemId = null;
+    this.itemForm.reset();
+    this.imagePreview = null;
+    this.showItemForm = false;
   }
 }

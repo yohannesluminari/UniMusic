@@ -10,4 +10,5 @@ export interface Post {
   user: IUser;
   rating: number | null;
   image: string | null;
+  userId: string; 
 }

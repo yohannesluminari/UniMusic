@@ -17,7 +17,7 @@ export class PostsComponent {
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private AuthService: AuthService // Import your user service if needed
+    private authService: AuthService // Import your user service if needed
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class PostsComponent {
       // Add more form controls as needed
     });
 
-    this.currentUser = this.AuthService.getCurrentUser(); // Fetch current user if needed
+    this.currentUser = this.authService.getCurrentUser(); // Fetch current user if needed
   }
 
   onSubmit() {
@@ -38,7 +38,7 @@ export class PostsComponent {
         title: formData.title,
         content: formData.content,
         createdAt: new Date(),
-        user: this.currentUser,
+        userId: this.currentUser.id, // Save only the user ID
         rating: null,
         image: null
       };

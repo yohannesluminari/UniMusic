@@ -2,7 +2,7 @@ import { Album } from "./Album";
 import { Artist } from "./Artist";
 
 export interface IUser {
-  id: number;
+  id: string;
   username: string;
   email: string;
   password: string;

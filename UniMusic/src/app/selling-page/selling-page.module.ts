@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SellingPageRoutingModule } from './selling-page-routing.module';
 import { SellingPageComponent } from './selling-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { SellingPageComponent } from './selling-page.component';
   ],
   imports: [
     CommonModule,
-    SellingPageRoutingModule
+    SellingPageRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SellingPageModule { }

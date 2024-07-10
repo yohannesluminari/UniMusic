@@ -12,6 +12,8 @@ import { IUser } from '../models/i-user';
 export class AreaPrivataComponent  {
   isUserLoggedIn:boolean = false
   isSidebarVisible: boolean = false;
+  isPostFormVisible: boolean = true; // Stato iniziale: la card di creazione post non è visibile
+
 
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
@@ -34,6 +36,10 @@ export class AreaPrivataComponent  {
 
   logout(){
     this.authSvc.logout()
+  }
+
+  togglePostForm() {
+    this.isPostFormVisible = !this.isPostFormVisible; // Inverti lo stato di visibilità della card
   }
 }
 

@@ -88,6 +88,18 @@
             </ul>
           </div>
         </div>
+         <!-- artist -->
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">
+            <div class="card">
+              <img class="card-img-top" [src]="artist.pictureBig" alt="{{ artist.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ artist.name }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- artist -->
         <!-- albums -->
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">

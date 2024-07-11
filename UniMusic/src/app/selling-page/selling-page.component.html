@@ -12,29 +12,12 @@
               Add Items To Shop
             </button>
           </div>
+          <h1 class="my-3 choose">Choose your items or share one of yours with us</h1>
         </div>
       </article>
     </div>
   </section>
-
-  <div class="container ciaso">
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4" *ngFor="let item of items">
-        <div class="card h-100">
-          <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Price: {{ item.price }}</p>
-            <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-            <button *ngIf="item.userId !== currentUser?.id" class="btn btn-success mb-2">Compra</button> <!-- Bottone "Compra" escluso per l'utente loggato -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Form per la creazione di un nuovo item -->
+ <!-- Form per la creazione di un nuovo item -->
   <div class="container" *ngIf="showItemForm">
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
       <div class="card mb-3">
@@ -73,6 +56,22 @@
         </div>
       </div>
     </form>
+  </div>
+  <div class="container ciaso">
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4" *ngFor="let item of items">
+        <div class="card h-100">
+          <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">Price: {{ item.price }}</p>
+            <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
+            <button *ngIf="item.userId !== currentUser?.id" class="btn btn-success mb-2">Compra</button> <!-- Bottone "Compra" escluso per l'utente loggato -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">

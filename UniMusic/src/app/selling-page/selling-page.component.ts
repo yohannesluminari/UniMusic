@@ -60,30 +60,26 @@ export class SellingPageComponent {
         price: formData.price,
         createdAt: new Date(),
         userId: this.currentUser.id, // Salvare solo l'id dell'utente
-        image: this.imagePreview,
-        buyer: null,
-        sold: false
+        image: this.imagePreview || ''
       };
 
       if (this.editingItemId) {
-        // Se stiamo modificando un item esistente
-        this.itemService.updateItem(this.editingItemId, newItem).subscribe(
-          (updatedItem) => {
-            console.log('Item updated successfully:', updatedItem);
-            this.loadItems(); // Ricarica gli items dopo l'aggiornamento
-            this.cancelEditItem(); // Chiudi il form di modifica
+        this.itemService.updateItem(this.editingItemId, newItem as Item).subscribe(
+          () => {
+            this.loadItems();
+            this.editingItemId = null;
+            this.itemForm.reset();
           },
           (error) => {
             console.error('Error updating item:', error);
           }
         );
       } else {
-        // Altrimenti, creiamo un nuovo item
-        this.itemService.createItem(newItem).subscribe(
-          (createdItem) => {
-            console.log('Item created successfully:', createdItem);
-            this.loadItems(); // Ricarica gli items dopo la creazione
-            this.cancelEditItem(); // Chiudi il form di creazione
+        this.itemService.createItem(newItem as Item).subscribe(
+          (item) => {
+            this.items.push(item);
+            this.itemForm.reset();
+            this.showItemForm = false;
           },
           (error) => {
             console.error('Error creating item:', error);
@@ -93,96 +89,56 @@ export class SellingPageComponent {
     }
   }
 
-  deleteItem(item: Item) {
-    this.itemService.deleteItem(item.id).subscribe(
-      () => {
-        console.log('Item deleted successfully');
-        this.loadItems(); // Ricarica gli items dopo l'eliminazione
-      },
-      (error) => {
-        console.error('Error deleting item:', error);
-      }
-    );
+  toggleItemForm() {
+    this.showItemForm = !this.showItemForm;
+    this.itemForm.reset();
+    this.imagePreview = null;
+    this.editingItemId = null; // Resetta l'editingItemId quando si chiude/apre il form
   }
 
-  handleImageInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const file: File = (target.files as FileList)[0];
-
+  handleImageInput(event: any) {
+    const file = event.target.files[0];
     if (file) {
-      this.compressImage(file);
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
-  compressImage(file: File) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const maxWidth = 200;
-        const maxHeight = 200;
-
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > maxWidth) {
-            height *= maxWidth / width;
-            width = maxWidth;
-          }
-        } else {
-          if (height > maxHeight) {
-            width *= maxHeight / height;
-            height = maxHeight;
-          }
+  deleteItem(item: Item) {
+    if (this.currentUser?.id === item.userId) {
+      this.itemService.deleteItem(item.id).subscribe(
+        () => {
+          this.items = this.items.filter(i => i.id !== item.id);
+        },
+        (error) => {
+          console.error('Error deleting item:', error);
         }
-
-        canvas.width = width;
-        canvas.height = height;
-
-        ctx?.drawImage(img, 0, 0, width, height);
-
-        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
-
-        this.imagePreview = compressedBase64;
-      };
-      img.src = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+      );
+    }
   }
 
-  toggleItemForm() {
-    this.showItemForm = !this.showItemForm;
-    console.log('showItemForm:', this.showItemForm);
-  }
-
-  // Metodo per avviare la modifica di un item
   startEditItem(item: Item) {
-    this.editingItemId = item.id;
-    this.itemService.getItemById(item.id).subscribe(
-      (itemDetails) => {
-        this.itemForm.patchValue({
-          title: itemDetails.title,
-          description: itemDetails.description,
-          available: itemDetails.available,
-          price: itemDetails.price
-        });
-        this.imagePreview = itemDetails.image; // Visualizza l'immagine esistente dell'item
-        this.showItemForm = true; // Mostra il form di modifica
-      },
-      (error) => {
-        console.error('Error fetching item details:', error);
-      }
-    );
+    if (this.currentUser?.id === item.userId) {
+      this.editingItemId = item.id;
+      this.showItemForm = true;
+      this.itemForm.patchValue({
+        title: item.title,
+        description: item.description,
+        available: item.available,
+        price: item.price,
+        image: ''
+      });
+      this.imagePreview = item.image;
+    }
   }
 
-  // Metodo per annullare la modifica di un item
   cancelEditItem() {
     this.editingItemId = null;
+    this.showItemForm = false;
     this.itemForm.reset();
     this.imagePreview = null;
-    this.showItemForm = false;
   }
 }

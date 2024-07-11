@@ -1,0 +1,293 @@
+<body>
+  <div class="container-fluid text-white">
+    <div class="row">
+      <div class="d-none d-sm-block col-sm-3 bg-black ps-3">
+        <div class="sticky-top z-3 bg-black">
+          <i class="bi bi-three-dots"></i>
+          <div class="d-flex flex-column gap-2 mt-1">
+            <a href="#" class="nav-link active"
+              ><i class="bi bi-house-door-fill me-3 fs-5"></i>Home</a
+            >
+            <a href="#" class="nav-link"
+              ><i class="bi bi-search me-3 fs-5"></i>Cerca</a
+            >
+            <a href="#" class="nav-link"
+              ><i class="bi bi-collection me-3 fs-5"></i>La tua libreria</a
+            >
+          </div>
+          <div
+            class="d-flex flex-column gap-2 mt-4 pb-3 border-bottom border-secondary"
+          >
+            <a href="#" class="nav-link"
+              ><i class="bi bi-plus-square me-3 fs-5"></i>Crea Playlist</a
+            >
+            <a href="#" class="nav-link"
+              ><i class="bi bi-search me-3 fs-5"></i>Brani che ti piacciono</a
+            >
+            <a href="#" class="nav-link"
+              ><i class="bi bi-collection me-3 fs-5"></i>I tuoi episodi</a
+            >
+          </div>
+        </div>
+        <div class="mt-2 overflow-y-scroll left-bar">
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+          <a href="" class="nav-link">rickroll</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-7 central-part">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <i class="bi bi-chevron-left text-dark"></i>
+            <i class="bi bi-chevron-right text-dark"></i>
+          </div>
+          <div class="dropdown text-end">
+            <a
+              href="#"
+              class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img alt="error image" class="rounded-circle me-2" /> Username
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- albums -->
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">
+            <div class="card">
+              <img class="card-img-top" [src]="artist.pictureBig" alt="{{ artist.name }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ artist.name }}</h5>
+                <div *ngFor="let album of artist.albums">
+                  <div class="card mb-3">
+                    <img class="card-img-top" [src]="album.coverBig" alt="{{ album.title }}">
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-muted">{{ album.title }}</h6>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let track of album.tracks">
+                          {{ track.title }} - {{ track.duration }} seconds
+                          <audio controls>
+                            <source [src]="track.preview" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                          </audio>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- albums -->
+        </div>
+
+
+      </div>
+
+      <div class="d-none d-sm-block col-sm-2 bg-black">
+        <div class="d-flex justify-content-between align-items-center my-2">
+          <p class="mb-0">Attività amici</p>
+          <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-person-add"></i>
+            <i class="bi bi-x fs-5"></i>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/IMG_5872.jpeg"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Rosa Sorpreso</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/IMG20231231193839.jpg"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Ludovica De Fazio</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/fotoprofilo.png"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Luigi Guajana</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/FOT_1606.jpg"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Luca Grossi</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/2024-03-11-143221.jpg"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Emanuel Incarnato</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/Chris_Tripodi.jpg"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Christian Tripodi</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-start mt-4">
+          <div class="d-flex gap-2">
+            <img
+              src="./assets/imgs/profile/yolumy.webp"
+              class="profile-picture"
+            />
+            <div class="d-flex flex-column gap-1">
+              <h4 class="fs-6 mb-0">Yohannes Luminari</h4>
+              <p class="mb-0 my-font-size">aaaa</p>
+              <p class="mb-0 my-font-size">
+                <i class="bi bi-music-note-beamed pe-2"></i>aaa
+              </p>
+            </div>
+          </div>
+          <p class="mb-0 my-font-size">4 ore</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer
+    class="sticky-bottom d-flex justify-content-between bg-dark z-3 px-3 py-1 text-white align-items-center"
+  >
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-2 align-items-center">
+        <img id="img-bar" src="./assets/imgs/profile/yolumy.webp" />
+        <div class="d-flex flex-column">
+          <h4 id="title" class="fs-6 mb-0">aaaaaa</h4>
+          <p id="author" class="mb-0 my-font-size">aaaaa</p>
+        </div>
+      </div>
+      <i class="bi bi-heart ps-3"></i>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex align-items-center gap-3">
+        <i class="bi bi-shuffle text-success"></i>
+        <i class="bi bi-skip-start-fill fs-3"></i>
+        <i class="bi bi-play-circle-fill fs-1"></i>
+        <i class="bi bi-skip-end-fill fs-3"></i>
+        <i class="bi bi-arrow-repeat text-success"></i>
+      </div>
+      <div class="d-flex align-items-center mediaplayer">
+        <span class="pe-3">3</span>
+        <div id="myProgress">
+          <div id="myBar" class="bg-success"></div>
+        </div>
+        <span class="ps-3">3</span>
+      </div>
+    </div>
+    <div>
+      <i class="bi bi-mic ps-2"></i>
+      <i class="bi bi-menu-button-wide ps-2"></i>
+      <i class="bi bi-music-player ps-2"></i>
+      <i class="bi bi-volume-up ps-2"></i>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        aria-label="range"
+        class="progress-bar"
+        step="1"
+      />
+      <i class="bi bi-arrows-angle-expand ps-2"></i>
+    </div>
+  </footer>
+</body>

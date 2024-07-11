@@ -1,5 +1,4 @@
-import { Artist } from "./Artist";
-import { IUser } from "./i-user";
+import { Track } from "./Track";
 
 
 export interface Album {
@@ -8,10 +7,5 @@ export interface Album {
   cover: string;
   coverBig: string;
   tracklist: string;
-  link: string;
-  releaseDate: string; // Or Date object, depending on your preference
-  listeningTimeInMinutes: number;
-  userListeningTimes: Map<IUser, number>;
-  likedByUsers: IUser[];
-  artist: Artist;
+  tracks: Track[];
 }

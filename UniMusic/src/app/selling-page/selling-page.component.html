@@ -1,63 +1,3 @@
-<!-- <body>
-  <section class="container">
-
-    <div class="row mt-4">
-      <div *ngFor="let item of items" class="col-md-4 mb-4">
-        <div class="card h-100">
-          <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Price: {{ item.price }}</p>
-            <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-            <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button (click)="toggleItemForm()" class="btn btn-primary mt-3 mb-3">Add Item</button>
-
-    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" *ngIf="showItemForm" class="form-container">
-      <div class="card mb-3">
-        <div class="card-header">
-          New Item Details
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="form-control" formControlName="title" required>
-          </div>
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea id="description" class="form-control" formControlName="description" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="available">Available:</label>
-            <select id="available" class="form-control" formControlName="available" required>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="price">Price:</label>
-            <input type="number" id="price" class="form-control" formControlName="price" required>
-          </div>
-          <div class="form-group">
-            <label for="image">Image:</label>
-            <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*">
-            <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
-          </div>
-        </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Create Item</button>
-        </div>
-      </div>
-    </form>
-  </section>
-
-</body> -->
-
 <body>
   <section class="carousel next">
     <div class="list">
@@ -94,7 +34,49 @@
     </div>
   </div>
 
+  <!-- Form per la creazione di un nuovo item -->
+  <div class="container" *ngIf="showItemForm">
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
+      <div class="card mb-3">
+        <div class="card-header">
+          New Item Details
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control" formControlName="title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" class="form-control" formControlName="description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="available">Available:</label>
+            <select id="available" class="form-control" formControlName="available" required>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" class="form-control" formControlName="price" required>
+          </div>
+          <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*">
+            <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary">Create Item</button>
+          <button type="button" class="btn btn-secondary" (click)="toggleItemForm()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <div class="container">
+    <h1 class="your">Your Items</h1>
     <div class="row mt-4">
       <div *ngFor="let item of items" class="col-md-4 mb-4 item-card">
         <div class="card h-100">
@@ -111,7 +93,7 @@
               <button class="btn btn-primary ms-2" (click)="startEditItem(item)">Edit</button>
             </div>
 
-            <!-- Form per la modifica dell'item -->
+            <!-- Form per la modifica dell'item  -->
             <form [formGroup]="itemForm" *ngIf="editingItemId === item.id" (ngSubmit)="onSubmit()">
               <div class="form-group">
                 <label for="title">Title:</label>
@@ -147,5 +129,4 @@
       </div>
     </div>
   </div>
-
 </body>

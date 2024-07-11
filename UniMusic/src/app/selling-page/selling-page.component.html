@@ -75,8 +75,9 @@
   </div>
 
   <div class="container">
-    <div class="row mt-4">
-      <div *ngFor="let item of items" class="col-md-4 mb-4 item-card">
+    <h1>Your Items</h1>
+    <div class="row mt-4 justify-content-center">
+      <div *ngFor="let item of filteredItems" class="col-md-4 mb-4 item-card">
         <div class="card h-100">
           <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
           <div class="card-body">
@@ -127,4 +128,3 @@
       </div>
     </div>
   </div>
-</body>

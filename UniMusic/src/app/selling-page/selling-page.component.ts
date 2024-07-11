@@ -15,14 +15,15 @@ export class SellingPageComponent {
   itemForm!: FormGroup;
   imagePreview: string | null = null;
   items: Item[] = [];
+  filteredItems: Item[] = []; // Aggiungi questa proprietà
   showItemForm = false;
   currentUser: IUser | null = null;
-  editingItemId: number | null = null; // ID dell'item in modifica
+  editingItemId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
     private itemService: ItemsService,
-    private authService: AuthService // Inject AuthService per ottenere il currentUser
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -34,19 +35,26 @@ export class SellingPageComponent {
       image: ['']
     });
 
+    this.currentUser = this.authService.getCurrentUser();
     this.loadItems();
-    this.currentUser = this.authService.getCurrentUser(); // Ottieni il currentUser dal AuthService
   }
 
   loadItems() {
     this.itemService.getAllItems().subscribe(
       (items) => {
         this.items = items;
+        this.filterItemsByUser(); // Filtra gli item dopo averli caricati
       },
       (error) => {
         console.error('Error fetching items:', error);
       }
     );
+  }
+
+  filterItemsByUser() {
+    if (this.currentUser) {
+      this.filteredItems = this.items.filter(item => item.userId === this.currentUser!.id);
+    }
   }
 
   onSubmit() {
@@ -59,7 +67,7 @@ export class SellingPageComponent {
         available: formData.available,
         price: formData.price,
         createdAt: new Date(),
-        userId: this.currentUser.id, // Salvare solo l'id dell'utente
+        userId: this.currentUser.id,
         image: this.imagePreview || ''
       };
 
@@ -78,6 +86,7 @@ export class SellingPageComponent {
         this.itemService.createItem(newItem as Item).subscribe(
           (item) => {
             this.items.push(item);
+            this.filterItemsByUser(); // Filtra gli item dopo aver creato un nuovo item
             this.itemForm.reset();
             this.showItemForm = false;
           },
@@ -93,7 +102,7 @@ export class SellingPageComponent {
     this.showItemForm = !this.showItemForm;
     this.itemForm.reset();
     this.imagePreview = null;
-    this.editingItemId = null; // Resetta l'editingItemId quando si chiude/apre il form
+    this.editingItemId = null;
   }
 
   handleImageInput(event: any) {
@@ -112,6 +121,7 @@ export class SellingPageComponent {
       this.itemService.deleteItem(item.id).subscribe(
         () => {
           this.items = this.items.filter(i => i.id !== item.id);
+          this.filterItemsByUser(); // Filtra gli item dopo aver eliminato un item
         },
         (error) => {
           console.error('Error deleting item:', error);

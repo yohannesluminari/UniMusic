@@ -95,4 +95,10 @@ export class AuthService {
     // Example: You might have the current user in a behavior subject
     return this.authSubject.value; // Assuming authSubject contains the current user
   }
+  // Metodo per recuperare l'altro utente con un avatar diverso
+  getOtherUser(userId: number): Observable<IUser> {
+    // Supponiamo di avere un endpoint per recuperare un utente specifico
+    const url = `${environment.userUrl}/${userId}`;
+    return this.Http.get<IUser>(url);
+  }
 }

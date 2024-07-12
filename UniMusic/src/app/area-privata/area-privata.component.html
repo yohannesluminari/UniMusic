@@ -106,50 +106,19 @@
       </a>
     </div>
 
-    <!-- stories Content-->
     <div class="stories">
-      <!-- stories 1-->
+      <!-- stories 1 (CurrentUser) -->
       <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
+        <img *ngIf="currentUser && currentUser.avatar" [src]="currentUser.avatar" alt="Avatar" />
         <div class="add">+</div>
       </div>
-      <!-- stories 2-->
+      <!-- stories 2 (OtherUser) -->
       <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 3-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 4-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 5-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 6-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 7-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 8-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 9-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
-      </div>
-      <!-- stories 10-->
-      <div class="stories-img color">
-        <img src="/assets/profilePic/yl.jpg" alt="" />
+        <img *ngIf="otherUser && otherUser.avatar" [src]="otherUser.avatar" alt="Avatar" />
       </div>
     </div>
+
+
 
     <!-- MAIN POSTS -->
     <div class="feed">

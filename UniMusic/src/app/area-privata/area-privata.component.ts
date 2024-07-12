@@ -16,6 +16,8 @@ export class AreaPrivataComponent  {
   isSidebarVisible: boolean = false;
   isPostFormVisible: boolean = true; // Stato iniziale: la card di creazione post non è visibile
   posts: Post[] = []; // Array per memorizzare i post degli utenti
+  currentUser: IUser | null = null;
+  otherUser: IUser | null = null;
 
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
@@ -31,10 +33,16 @@ export class AreaPrivataComponent  {
       if (user) {
         this.registerData = user; // Assegna i dati dell'utente ai registerData
         this.isUserLoggedIn = true; // Imposta il flag di accesso utente a true
+        this.currentUser = user;
       } else {
         this.isUserLoggedIn = false; // Se l'utente non è loggato, il flag di accesso utente è false
       }
     });
+     // Supponiamo che tu abbia un metodo per recuperare l'altro utente con un avatar diverso
+     this.authSvc.getOtherUser(2) // Supponiamo che l'id dell'altro utente sia 2
+     .subscribe(user => {
+       this.otherUser = user;
+     });
 
     this.loadPosts(); // Carica i post all'avvio del componente
   }

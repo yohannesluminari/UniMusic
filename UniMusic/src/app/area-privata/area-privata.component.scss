@@ -231,7 +231,7 @@ body {
 .stories{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   margin-top: 2rem;
 }
 .stories-img {
@@ -368,4 +368,11 @@ body {
     margin-bottom: 2rem; /* Margine inferiore per separare le cards */
     text-align: center; /* Centratura del contenuto */
   }
+}
+.stories {
+  display: flex; /* Imposta il contenitore .stories come flex container */
+}
+
+.stories-img {
+  margin-right: 10px; /* Aggiunge spazio tra le immagini */
 }

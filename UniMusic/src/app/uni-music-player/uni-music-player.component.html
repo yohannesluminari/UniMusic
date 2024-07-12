@@ -88,50 +88,47 @@
             </ul>
           </div>
         </div>
-         <!-- artist -->
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">
-            <div class="card">
-              <img class="card-img-top" [src]="artist.pictureBig" alt="{{ artist.name }}">
-              <div class="card-body">
-                <h5 class="card-title">{{ artist.name }}</h5>
-              </div>
+        <!-- Sezione per visualizzare gli artisti o dettagli dell'artista selezionato -->
+      <div class="row" *ngIf="!selectedArtist">
+        <!-- Mostra tutti gli artisti -->
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">
+          <div class="card" (click)="selectArtist(artist)">
+            <img class="card-img-top" [src]="artist.pictureBig" alt="{{ artist.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ artist.name }}</h5>
             </div>
           </div>
         </div>
-        <!-- artist -->
-        <!-- albums -->
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4" *ngFor="let artist of artists">
-            <div class="card">
-              <img class="card-img-top" [src]="artist.pictureBig" alt="{{ artist.name }}">
-              <div class="card-body">
-                <h5 class="card-title">{{ artist.name }}</h5>
-                <div *ngFor="let album of artist.albums">
-                  <div class="card mb-3">
-                    <img class="card-img-top" [src]="album.coverBig" alt="{{ album.title }}">
-                    <div class="card-body">
-                      <h6 class="card-subtitle mb-2 text-muted">{{ album.title }}</h6>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item" *ngFor="let track of album.tracks">
-                          {{ track.title }} - {{ track.duration }} seconds
-                          <audio controls>
-                            <source [src]="track.preview" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                          </audio>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+      </div>
+
+      <!-- Dettagli dell'artista selezionato -->
+      <div *ngIf="selectedArtist">
+        <div class="card">
+          <img class="card-img-top" [src]="selectedArtist.pictureBig" alt="{{ selectedArtist.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ selectedArtist.name }}</h5>
+            <div *ngFor="let album of selectedArtist.albums">
+              <div class="card mb-3">
+                <img class="card-img-top" [src]="album.coverBig" alt="{{ album.title }}">
+                <div class="card-body">
+                  <h6 class="card-subtitle mb-2 text-muted">{{ album.title }}</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let track of album.tracks">
+                      {{ track.title }} - {{ track.duration }} seconds
+                      <audio controls>
+                        <source [src]="track.preview" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                      </audio>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
+            <button class="btn btn-secondary" (click)="deselectArtist()">Chiudi dettagli</button>
           </div>
-          <!-- albums -->
         </div>
-
-
       </div>
+    </div>
 
       <div class="d-none d-sm-block col-sm-2 bg-black">
         <div class="d-flex justify-content-between align-items-center my-2">

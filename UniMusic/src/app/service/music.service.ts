@@ -18,9 +18,9 @@ export class MusicService {
   getArtistsData(artistIds: number[]): Observable<Artist[]> {
     return this.fetchArtists(artistIds).pipe(
       switchMap((artists: Artist[]) => {
-        const albumObservables = artists.map(artist => {
+        const albumObservables = artists.map((artist: Artist) => {
           return this.fetchAlbums(artist.id).pipe(
-            map(albums => {
+            map((albums: Album[]) => {
               artist.albums = albums;
               return artist;
             })
@@ -32,7 +32,7 @@ export class MusicService {
   }
 
   private fetchArtists(artistIds: number[]): Observable<Artist[]> {
-    const artistObservables = artistIds.map(id =>
+    const artistObservables = artistIds.map((id: number) =>
       this.http.get<any>(`${this.baseUrl}/artist/${id}`)
         .pipe(
           map((response: any) => ({
@@ -59,8 +59,20 @@ export class MusicService {
           cover: album.cover_medium,
           coverBig: album.cover_big,
           tracklist: album.tracklist,
-          tracks: [] as Track[] 
+          tracks: [] as Track[]
         } as Album)))
+      );
+  }
+
+  fetchTracks(albumId: number): Observable<Track[]> {
+    return this.http.get<any>(`${this.baseUrl}/album/${albumId}/tracks`)
+      .pipe(
+        map((response: any) => response.data.map((track: any) => ({
+          id: track.id,
+          title: track.title,
+          duration: track.duration,
+          preview: track.preview
+        } as Track)))
       );
   }
 }

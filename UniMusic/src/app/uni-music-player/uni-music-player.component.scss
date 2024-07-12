@@ -1,5 +1,11 @@
 body{
   margin-top: 120px;
+  .titolo{
+    font-size: 1.7rem;
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+  }
 }
 .central-part{
   i{
@@ -57,6 +63,22 @@ body{
 input[type="range"] {
     accent-color: white;
 }
+
+.left-bar {
+  max-height: calc(100vh - 120px); /* Imposta l'altezza massima per il menu laterale */
+  overflow-y: auto; /* Abilita lo scroll se il contenuto supera l'altezza massima */
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 120px; /* Altezza dell'header che vuoi lasciare libera sopra il menu */
+  z-index: 3; /* Assicura che sia visibile sopra altri elementi */
+}
+
 
 
 

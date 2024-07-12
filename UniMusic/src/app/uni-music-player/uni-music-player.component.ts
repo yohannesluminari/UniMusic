@@ -22,6 +22,12 @@ export class UniMusicPlayerComponent {
   showAlbums: boolean = false;
   showTracks: boolean = false;
 
+    // Define currentUser here
+    currentUser: any = {  // Replace 'any' with a proper type if you have one
+      avatarUrl: './assets/imgs/default-avatar.jpg',  // Example path to default avatar image
+      username: 'Guest'
+    };
+
   constructor(private musicService: MusicService) { }
 
   ngOnInit(): void {

@@ -43,7 +43,7 @@ export class SellingPageComponent {
     this.itemService.getAllItems().subscribe(
       (items) => {
         this.items = items;
-        this.filterItemsByUser(); // Filtra gli item dopo averli caricati
+        this.filterItemsByUser(); 
       },
       (error) => {
         console.error('Error fetching items:', error);

@@ -17,9 +17,13 @@
       <input type="file" class="form-control-file" id="avatar" (change)="handleAvatarInput($event)">
       <!-- Anteprima dell'avatar -->
       <img *ngIf="registerData.avatar" [src]="registerData.avatar" alt="Avatar Preview" class="img-thumbnail mt-2" style="max-width: 200px;">
+
+        <a class="nav-link active my-3 px-5 loginReister" aria-current="page" routerLink="/auth/login">If You have already an account</a>
+
+
     </div>
 
-    
+
       <button type="button" class="btn btn-success" (click)="signUp()">Registrati</button>
     </form>
 

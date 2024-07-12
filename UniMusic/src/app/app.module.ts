@@ -7,13 +7,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ItemsComponent } from './components/items/items.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    ItemsComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

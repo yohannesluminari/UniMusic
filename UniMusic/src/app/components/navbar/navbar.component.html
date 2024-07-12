@@ -53,11 +53,11 @@
         </li>
 
         <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
-          <a class="nav-link" routerLink="/FavouriteSongs" (click)="closeNavbar()">Favourite Songs</a>
+          <a class="nav-link" routerLink="/UniMusicPlayer" (click)="closeNavbar()">Music Player</a>
         </li>
 
         <li class="nav-item flex-fill" *ngIf="isUserLoggedIn">
-          <a class="nav-link" routerLink="/UniMusicPlayer" (click)="closeNavbar()">Music Player</a>
+          <a class="nav-link" routerLink="/FavouriteSongs" (click)="closeNavbar()">Favourite Songs</a>
         </li>
 
         <li class="nav-item flex-fill" *ngIf="!isUserLoggedIn">
@@ -84,7 +84,7 @@
       </form>
 
       <a class="btn btn-danger logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Esci</a>
-      <a class="btn btnNav commerce" href="">m-commerce</a>
+      <a class="btn btnNav commerce"  routerLink="auth/register">m-commerce</a>
 
     </div>
   </div>

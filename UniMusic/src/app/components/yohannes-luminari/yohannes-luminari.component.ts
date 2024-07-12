@@ -16,7 +16,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
     private maxArtists: number = 188;
     private maxTracks: number = 600;
 
-    @ViewChild('contactSection') contactSection!: ElementRef; // Initialize with type assertion
+    @ViewChild('contactSection') contactSection!: ElementRef;
 
     constructor() { }
 
@@ -26,22 +26,22 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
     }
 
     ngAfterViewInit(): void {
-      // Now you can safely access this.contactSection
-      console.log(this.contactSection.nativeElement); // Example usage
+
+      console.log(this.contactSection.nativeElement);
     }
 
     startRoleRotation() {
       setInterval(() => {
         this.currentIndex = (this.currentIndex + 1) % this.roles.length;
         this.currentRole = this.roles[this.currentIndex];
-      }, 3000); // Change every 3 seconds
+      }, 3000); // ogni 3 seconds
     }
 
     scrollToContact() {
       if (this.contactSection.nativeElement.style.display === 'block') {
-        this.contactSection.nativeElement.style.display = 'none'; // Hide the contact section
+        this.contactSection.nativeElement.style.display = 'none'; // hide contact section
       } else {
-        this.contactSection.nativeElement.style.display = 'block'; // Show the contact section
+        this.contactSection.nativeElement.style.display = 'block'; // Show contact section
         this.contactSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
       }
     }

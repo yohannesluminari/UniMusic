@@ -16,8 +16,12 @@ const routes: Routes = [
     loadChildren: () => import('./area-privata/area-privata.module').then(m => m.AreaPrivataModule),
     canActivate: [AuthGuard]
   },
-  { path: 'UniMusicPlayer', loadChildren: () => import('./uni-music-player/uni-music-player.module').then(m => m.UniMusicPlayerModule) },
-  { path: 'sellingPage', loadChildren: () => import('./selling-page/selling-page.module').then(m => m.SellingPageModule) }
+  { path: 'UniMusicPlayer', loadChildren: () => import('./uni-music-player/uni-music-player.module').then(m => m.UniMusicPlayerModule),
+    canActivate: [AuthGuard]
+  },
+  { path: 'sellingPage', loadChildren: () => import('./selling-page/selling-page.module').then(m => m.SellingPageModule),
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

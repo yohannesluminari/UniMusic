@@ -21,4 +21,9 @@ export class PostService {
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.postUrl);
   }
+
+  deletePost(postId: number): Observable<any> {
+    const deleteUrl = `${this.postUrl}/${postId}`;
+    return this.http.delete(deleteUrl);
+  }
 }

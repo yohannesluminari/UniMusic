@@ -17,6 +17,8 @@ export class PostsComponent {
   imagePreview: string | null = null;
   posts: Post[] = [];
   showPostForm = false;
+  isEditMode: boolean = false; // Per gestire la modalità di edit
+  selectedPost: Post | null = null; // Post selezionato per l'editing
 
   constructor(
     private fb: FormBuilder,
@@ -77,6 +79,32 @@ export class PostsComponent {
   }
 
   deletePost(post: Post) {
+    this.postService.deletePost(post.id).subscribe(
+      () => {
+        this.posts = this.posts.filter(p => p.id !== post.id);
+        console.log('Post deleted successfully:', post);
+      },
+      (error) => {
+        console.error('Errore durante l\'eliminazione del post:', error);
+      }
+    );
+  }
+
+  editPost(post: Post) {
+    this.isEditMode = true;
+    this.selectedPost = post;
+    this.showPostForm = true; // Mostra il form per l'editing
+    // Aggiorna i valori del form con i dati del post selezionato
+    this.postForm.patchValue({
+      title: post.title,
+      content: post.content,
+      // Aggiungi altri campi se necessario
+    });
+
+    // Aggiorna l'anteprima dell'immagine se disponibile
+    if (post.image) {
+      this.imagePreview = post.image;
+    }
   }
 
   handleImageInput(event: Event) {

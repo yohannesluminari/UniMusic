@@ -19,10 +19,6 @@ export class AreaPrivataComponent  {
   currentUser: IUser | null = null;
   otherUser: IUser | null = null;
 
-  toggleSidebar() {
-    this.isSidebarVisible = !this.isSidebarVisible;
-  }
-
   registerData: Partial<IUser> = {}; // Per conservare i dati dell'utente
 
   constructor(private authSvc: AuthService, private postService: PostService) {}
@@ -60,9 +56,7 @@ export class AreaPrivataComponent  {
     );
   }
 
-  togglePostForm() {
-    this.isPostFormVisible = !this.isPostFormVisible; // Inverti lo stato di visibilità della card
-  }
+
 
   editPost(post: Post) {
     // Implementa la logica per l'editing del post
@@ -82,5 +76,13 @@ export class AreaPrivataComponent  {
         console.error('Errore durante l\'eliminazione del post:', error);
       }
     );
+  }
+
+  toggleSidebar() {
+    this.isSidebarVisible = !this.isSidebarVisible;
+  }
+
+  togglePostForm() {
+    this.isPostFormVisible = !this.isPostFormVisible;
   }
 }

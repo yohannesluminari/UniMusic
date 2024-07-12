@@ -15,17 +15,17 @@
     <div class="about">
       <!-- box 1 -->
       <div class="box">
-        <h3>54</h3>
+        <h3>3</h3>
         <span>Posts1</span>
       </div>
       <!-- box 2 -->
       <div class="box">
-        <h3>14.4k</h3>
+        <h3>1</h3>
         <span>Followers</span>
       </div>
       <!-- box 3 -->
       <div class="box">
-        <h3>14</h3>
+        <h3>0</h3>
         <span>Following</span>
       </div>
     </div>
@@ -40,37 +40,25 @@
       </a>
       <a href="">
         <span class="icon">
-          <i class="bi bi-search"></i>
+          <i class="bi bi-bell"></i>
         </span>
         Notification
       </a>
       <a href="">
         <span class="icon">
-          <i class="bi bi-search"></i>
+          <i class="bi bi-chat-dots"></i>
         </span>
         Messages
       </a>
       <a href="">
         <span class="icon">
-          <i class="bi bi-search"></i>
+          <i class="bi bi-folder-plus"></i>
         </span>
         Direct
       </a>
       <a href="">
         <span class="icon">
-          <i class="bi bi-search"></i>
-        </span>
-        Stats
-      </a>
-      <a href="">
-        <span class="icon">
-          <i class="bi bi-search"></i>
-        </span>
-        Stats
-      </a>
-      <a href="">
-        <span class="icon">
-          <i class="bi bi-search"></i>
+          <i class="bi bi-gear"></i>
         </span>
         Setting
       </a>
@@ -108,20 +96,23 @@
 
     <div class="stories">
       <!-- stories 1 (CurrentUser) -->
-      <div class="stories-img color">
-        <img *ngIf="currentUser && currentUser.avatar" [src]="currentUser.avatar" alt="Avatar" />
+      <div class="stories-img color" *ngIf="currentUser">
+        <img *ngIf="currentUser.avatar" [src]="currentUser.avatar" alt="Avatar" />
         <div class="add">+</div>
+        <div *ngIf="currentUser.username" class="username my-2">{{ currentUser.username }}</div>
       </div>
       <!-- stories 2 (OtherUser) -->
-      <div class="stories-img color">
-        <img *ngIf="otherUser && otherUser.avatar" [src]="otherUser.avatar" alt="Avatar" />
+      <div class="stories-img color" *ngIf="otherUser">
+        <div><img *ngIf="otherUser.avatar" [src]="otherUser.avatar" alt="Avatar" /></div>
+        <div *ngIf="otherUser.username" class="username  my-2">{{ otherUser.username }}</div>
       </div>
     </div>
 
 
 
+
     <!-- MAIN POSTS -->
-    <div class="feed">
+    <div class="feed my-5">
       <h1>Feed</h1>
       <div class="feed-text">
         <h2>Latest</h2>

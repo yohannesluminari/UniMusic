@@ -17,6 +17,10 @@ export class UniMusicPlayerComponent {
   artistIds: number[] = [525046, 4495513, 339209, 15166511, 382937, 230, 1310298, 48975581, 63273652, 2727681, 48975581];
   artists: Artist[] = [];
   selectedArtist: Artist | null = null;
+  selectedAlbum: Album | null = null;
+  showArtists: boolean = true;
+  showAlbums: boolean = false;
+  showTracks: boolean = false;
 
   constructor(private musicService: MusicService) { }
 
@@ -30,11 +34,23 @@ export class UniMusicPlayerComponent {
 
   selectArtist(artist: Artist): void {
     this.selectedArtist = artist;
+    this.showArtists = false;
+    this.showAlbums = true;
     this.fetchAlbumTracks(this.selectedArtist);
   }
 
-  deselectArtist(): void {
+  selectAlbum(album: Album): void {
+    this.selectedAlbum = album;
+    this.showAlbums = false;
+    this.showTracks = true;
+  }
+
+  deselect(): void {
     this.selectedArtist = null;
+    this.selectedAlbum = null;
+    this.showArtists = true;
+    this.showAlbums = false;
+    this.showTracks = false;
   }
 
   private fetchAlbumTracks(artist: Artist): void {

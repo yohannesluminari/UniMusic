@@ -11,32 +11,33 @@ import { IUser } from '../../models/i-user';
   styleUrl: './posts.component.scss'
 })
 export class PostsComponent {
-  postForm!: FormGroup;
+  postForm: FormGroup;
   currentUser: IUser | null = null;
   createdPost: Post | null = null;
   imagePreview: string | null = null;
   posts: Post[] = [];
   showPostForm = false;
-  isEditMode: boolean = false; // Per gestire la modalità di edit
-  selectedPost: Post | null = null; // Post selezionato per l'editing
+  isEditMode = false;
+  selectedPost: Post | null = null;
 
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
     private authService: AuthService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.postForm = this.fb.group({
+      id: [''],
       title: ['', Validators.required],
       content: ['', Validators.required]
     });
+  }
 
+  ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
     this.loadPosts();
   }
 
-  loadPosts() {
+  loadPosts(): void {
     if (this.currentUser) {
       this.postService.getAllPosts().subscribe(
         (posts) => {
@@ -49,7 +50,7 @@ export class PostsComponent {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.postForm.valid && this.currentUser) {
       const formData = this.postForm.value;
 
@@ -62,52 +63,82 @@ export class PostsComponent {
         image: this.imagePreview
       };
 
-      this.postService.createPost(newPost).subscribe(
-        (createdPost) => {
-          console.log('Post created successfully:', createdPost);
-          this.createdPost = createdPost;
-          this.loadPosts();
-        },
-        (error) => {
-          console.error('Error creating post:', error);
-        }
-      );
-
-      this.postForm.reset();
-      this.imagePreview = null;
+      if (this.isEditMode && this.selectedPost) {
+        newPost.id = this.selectedPost.id;
+        this.updatePost(newPost);
+      } else {
+        this.createPost(newPost);
+      }
     }
   }
 
-  deletePost(post: Post) {
+  createPost(newPost: Partial<Post>): void {
+    this.postService.createPost(newPost).subscribe(
+      (createdPost) => {
+        console.log('Post created successfully:', createdPost);
+        this.createdPost = createdPost;
+        this.loadPosts();
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Error creating post:', error);
+      }
+    );
+  }
+
+  updatePost(updatedPost: Partial<Post>): void {
+    this.postService.updatePost(updatedPost).subscribe(
+      (updatedPost) => {
+        console.log('Post updated successfully:', updatedPost);
+        const index = this.posts.findIndex(p => p.id === updatedPost.id);
+        if (index !== -1) {
+          this.posts[index] = updatedPost;
+        }
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Error updating post:', error);
+      }
+    );
+  }
+
+  deletePost(post: Post): void {
     this.postService.deletePost(post.id).subscribe(
       () => {
         this.posts = this.posts.filter(p => p.id !== post.id);
         console.log('Post deleted successfully:', post);
       },
       (error) => {
-        console.error('Errore durante l\'eliminazione del post:', error);
+        console.error('Error deleting post:', error);
       }
     );
   }
 
-  editPost(post: Post) {
+  editPost(post: Post): void {
     this.isEditMode = true;
     this.selectedPost = post;
-    this.showPostForm = true; // Mostra il form per l'editing
-    // Aggiorna i valori del form con i dati del post selezionato
+    this.showPostForm = true;
     this.postForm.patchValue({
+      id: post.id,
       title: post.title,
-      content: post.content,
-      // Aggiungi altri campi se necessario
+      content: post.content
     });
-
-    // Aggiorna l'anteprima dell'immagine se disponibile
-    if (post.image) {
-      this.imagePreview = post.image;
-    }
+    this.imagePreview = post.image || null;
   }
 
-  handleImageInput(event: Event) {
+  cancelEdit(): void {
+    this.isEditMode = false;
+    this.selectedPost = null;
+    this.resetForm();
+  }
+
+  resetForm(): void {
+    this.postForm.reset();
+    this.imagePreview = null;
+    this.showPostForm = false;
+  }
+
+  handleImageInput(event: Event): void {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
 
@@ -116,7 +147,7 @@ export class PostsComponent {
     }
   }
 
-  compressImage(file: File) {
+  compressImage(file: File): void {
     const reader = new FileReader();
     reader.onload = () => {
       const img = new Image();
@@ -155,7 +186,10 @@ export class PostsComponent {
     reader.readAsDataURL(file);
   }
 
-  togglePostForm() {
+  togglePostForm(): void {
     this.showPostForm = !this.showPostForm;
+    this.isEditMode = false;
+    this.selectedPost = null;
+    this.resetForm();
   }
 }

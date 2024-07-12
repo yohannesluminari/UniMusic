@@ -40,7 +40,7 @@
           <p class="card-text">{{ post.content }}</p>
           <p class="card-text"><small class="text-muted">Created: {{ post.createdAt | date:'medium' }}</small></p>
           <div>
-            <button class="btn btn-primary mr-2" (click)="editPost(post)">Edit</button>
+            <button class="btn btn-primary mr-2 mx-2" (click)="editPost(post)">Edit</button>
             <button class="btn btn-danger" (click)="deletePost(post)">Delete</button>
           </div>
         </div>

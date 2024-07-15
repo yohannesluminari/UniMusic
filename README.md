@@ -54,3 +54,7 @@ Backend Setup: ---> mvn clean install
 Start the Backend: ---> mvn spring-boot:run
 
 Start the Frontend: ---> ng s -o per aprire il sito ; ng s per aggiornare
+
+
+    ....In progress stay tuned
+

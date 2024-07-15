@@ -1,11 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Artist {
-  id: number;
-  name: string;
-  image: string;
-}
 
 @Component({
   selector: 'app-carousel',
@@ -13,25 +6,21 @@ interface Artist {
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
-  artists: Artist[] = [];
-  isAnimationPaused: boolean = false; // Variabile per tracciare lo stato dell'animazione
-
-  constructor(private http: HttpClient) {}
+  imagePaths: string[] = [];
+  isAnimationPaused: boolean = false;
 
   ngOnInit(): void {
-    this.loadArtists();
+    this.loadImages();
   }
 
   ngAfterViewInit(): void {
-    // Pre-caricamento delle immagini
     this.preloadImages();
   }
 
-  loadArtists(): void {
-    this.http.get<Artist[]>('./assets/artisti.json')
-      .subscribe(data => {
-        this.artists = data;
-      });
+  loadImages(): void {
+    for (let i = 1; i <= 74; i++) {
+      this.imagePaths.push(`assets/artistiImg/${i}.jpg`);
+    }
   }
 
   toggleSliderAnimation(): void {
@@ -42,11 +31,11 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Funzione per pre-caricare tutte le immagini
   preloadImages(): void {
-    this.artists.forEach(artist => {
+    this.imagePaths.forEach(imagePath => {
       const img = new Image();
-      img.src = artist.image;
+      img.src = imagePath;
     });
   }
 }
+

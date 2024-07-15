@@ -8,22 +8,10 @@ import { AudioService } from '../service/audio.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
   users: IUser[] = [];
 
   constructor(private authSvc:AuthService,private audioService:AudioService) { }
-
-  ngOnInit(): void {
-    this.loadUsers();
-  }
-
-  loadUsers() {
-    this.authSvc.getAllUsers().subscribe(
-      (users: IUser[]) => {
-        this.users = users;
-      }
-    );
-  }
 
   currentAudioIndex: number | null = null;
 

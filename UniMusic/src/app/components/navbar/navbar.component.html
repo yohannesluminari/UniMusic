@@ -61,12 +61,12 @@
         </li>
 
         <li class="nav-item px-3 flex-fill">
-          <a class="nav-link active btn btn-danger px-5" aria-current="page" routerLink="auth/register" *ngIf="!isUserLoggedIn" (click)="closeNavbar()">Register</a>
+          <a class="nav-link active btn btn-danger px-5" aria-current="page" routerLink="auth/login" *ngIf="!isUserLoggedIn" (click)="closeNavbar()">Sign Up</a>
         </li>
 
-        <li class="nav-item flex-fill">
+        <!-- <li class="nav-item flex-fill">
           <a class="nav-link active btn btn-success px-5" aria-current="page" routerLink="/auth/login" *ngIf="!isUserLoggedIn" (click)="closeNavbar()">Login</a>
-        </li>
+        </li> -->
 
         <!-- Icona "person-circle" affiancata all'ultimo link -->
         <li class="nav-item mx-4" *ngIf="isUserLoggedIn">

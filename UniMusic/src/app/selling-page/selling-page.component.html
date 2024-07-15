@@ -17,7 +17,8 @@
       </article>
     </div>
   </section>
- <!-- Form per la creazione di un nuovo item -->
+
+  <!-- Form per la creazione di un nuovo item -->
   <div class="container" *ngIf="showItemForm">
     <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
       <div class="card mb-3">
@@ -34,7 +35,7 @@
             <textarea id="description" class="form-control" formControlName="description" required></textarea>
           </div>
           <div class="form-group">
-            <label for="available">Available:</label>
+            <label for="available">Available: </label>
             <select id="available" class="form-control" formControlName="available" required>
               <option value="true">Yes</option>
               <option value="false">No</option>
@@ -57,32 +58,38 @@
       </div>
     </form>
   </div>
-  <div class="container ciaso">
+
+  <!-- Items creati da altri utenti -->
+  <div class="container">
+    <h1>Available Items</h1>
     <div class="row mt-4">
-      <div class="col-md-4 mb-4" *ngFor="let item of items">
+      <div class="col-md-4 mb-4" *ngFor="let item of otherItems">
         <div class="card h-100">
           <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
           <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
             <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Price: € {{ item.price }}</p>
+            <p class="card-text">Available: {{ item.available }}</p>
+            <p class="card-text">Price: €{{ item.price }}</p>
             <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-            <button *ngIf="item.userId !== currentUser?.id" class="btn btn-success mb-2">Compra</button> <!-- Bottone "Compra" escluso per l'utente loggato -->
+            <button class="btn btn-success mb-2">Compra</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Items creati dall'utente loggato -->
   <div class="container">
     <h1>Your Items</h1>
-    <div class="row mt-4 justify-content-center">
-      <div *ngFor="let item of filteredItems" class="col-md-4 mb-4 item-card">
+    <div class="row mt-4">
+      <div class="col-md-4 mb-4" *ngFor="let item of userItems">
         <div class="card h-100">
           <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
           <div class="card-body">
             <h5 class="card-title">{{ item.title }}</h5>
             <p class="card-text">{{ item.description }}</p>
+            <p class="card-text">Available: €{{ item.available }}</p>
             <p class="card-text">Price: €{{ item.price }}</p>
             <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
 
@@ -103,7 +110,7 @@
                 <textarea id="description" class="form-control" formControlName="description" required></textarea>
               </div>
               <div class="form-group">
-                <label for="available">Available:</label>
+                <label for="available">Available: </label>
                 <select id="available" class="form-control" formControlName="available" required>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
@@ -128,3 +135,4 @@
       </div>
     </div>
   </div>
+</body>

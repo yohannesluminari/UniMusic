@@ -1,5 +1,4 @@
-import { AudioService } from './../service/audio.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Item } from '../models/Item';
 import { ItemsService } from '../service/items.service';
@@ -9,13 +8,14 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-selling-page',
   templateUrl: './selling-page.component.html',
-  styleUrl: './selling-page.component.scss',
+  styleUrls: ['./selling-page.component.scss'],
 })
-export class SellingPageComponent {
+export class SellingPageComponent implements OnInit {
   itemForm!: FormGroup;
   imagePreview: string | null = null;
   items: Item[] = [];
-  filteredItems: Item[] = []; // Aggiungi questa proprietà
+  userItems: Item[] = []; // Item creati dall'utente loggato
+  otherItems: Item[] = []; // Item creati da altri utenti
   showItemForm = false;
   currentUser: IUser | null = null;
   editingItemId: number | null = null;
@@ -43,7 +43,7 @@ export class SellingPageComponent {
     this.itemService.getAllItems().subscribe(
       (items) => {
         this.items = items;
-        this.filterItemsByUser(); 
+        this.filterItemsByUser();
       },
       (error) => {
         console.error('Error fetching items:', error);
@@ -53,7 +53,8 @@ export class SellingPageComponent {
 
   filterItemsByUser() {
     if (this.currentUser) {
-      this.filteredItems = this.items.filter(item => item.userId === this.currentUser!.id);
+      this.userItems = this.items.filter(item => item.userId === this.currentUser!.id);
+      this.otherItems = this.items.filter(item => item.userId !== this.currentUser!.id);
     }
   }
 
@@ -86,7 +87,7 @@ export class SellingPageComponent {
         this.itemService.createItem(newItem as Item).subscribe(
           (item) => {
             this.items.push(item);
-            this.filterItemsByUser(); // Filtra gli item dopo aver creato un nuovo item
+            this.filterItemsByUser();
             this.itemForm.reset();
             this.showItemForm = false;
           },
@@ -121,7 +122,7 @@ export class SellingPageComponent {
       this.itemService.deleteItem(item.id).subscribe(
         () => {
           this.items = this.items.filter(i => i.id !== item.id);
-          this.filterItemsByUser(); // Filtra gli item dopo aver eliminato un item
+          this.filterItemsByUser();
         },
         (error) => {
           console.error('Error deleting item:', error);

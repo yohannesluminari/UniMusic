@@ -29,50 +29,28 @@
             >
           </div>
         </div>
-        <div class="mt-2 overflow-y-scroll left-bar">
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
-          <a href="" class="nav-link">rickroll</a>
+        <div class="row" *ngIf="selectedArtist && selectedArtist.albums">
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            *ngFor="let album of selectedArtist.albums"
+            (click)="selectAlbum(album)"
+          >
+            <div class="card">
+              <img class="card-img-top" [src]="album.coverBig" alt="{{ album.title }}" />
+              <div class="card-body">
+                <h5 class="card-title">{{ album.title }}</h5>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+        </div>
+
 
       <div class="col-12 col-sm-7 central-part">
         <h1 class="titolo">
           Welcome, enjoy your stay and listen to your favorite music.
         </h1>
         <div class="d-flex align-items-center justify-content-between">
-          <div>
-            <i class="bi bi-chevron-left text-dark"></i>
-            <i class="bi bi-chevron-right text-dark"></i>
-          </div>
         </div>
         <!-- artist -->
         <div *ngIf="showArtists" class="row">
@@ -98,7 +76,7 @@
         <!-- albums -->
         <div *ngIf="showAlbums && selectedArtist" class="card mt-4">
           <div class="card-header">
-            <h5>{{ selectedArtist.name }}'s Albums</h5>
+            <h5 class="h5">{{ selectedArtist.name }}'s Albums</h5>
             <button
               class="btn btn-sm btn-secondary float-right"
               (click)="deselect()"

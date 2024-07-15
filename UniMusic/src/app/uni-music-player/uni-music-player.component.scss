@@ -4,7 +4,7 @@ body{
     font-size: 1.7rem;
     text-align: center;
     margin-top: 20px;
-    color: black;
+    color: white;
   }
 }
 .central-part{
@@ -41,7 +41,7 @@ body{
     width: 300%;
     height: 5px;
     border-radius: 10px;
-    background-color: grey;
+    background-color: white;
 }
 
 #myBar {
@@ -65,8 +65,8 @@ input[type="range"] {
 }
 
 .left-bar {
-  max-height: calc(100vh - 120px); /* Imposta l'altezza massima per il menu laterale */
-  overflow-y: auto; /* Abilita lo scroll se il contenuto supera l'altezza massima */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
 }
 
 .bg-black {
@@ -75,16 +75,44 @@ input[type="range"] {
 
 .sticky-top {
   position: sticky;
-  top: 120px; /* Altezza dell'header che vuoi lasciare libera sopra il menu */
-  z-index: 3; /* Assicura che sia visibile sopra altri elementi */
+  top: 120px;
+  z-index: 3;
 }
 
 
 
 
 
+.left-bar {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: none;
+}
+
+.card-body {
+  padding: 0.75rem;
+}
+
+.card-title {
+  font-size: 0.875rem;
+  color: white;
+  margin-bottom: 0;
+}
 
 
-
+.h5{
+  color: white;
+}
 
 

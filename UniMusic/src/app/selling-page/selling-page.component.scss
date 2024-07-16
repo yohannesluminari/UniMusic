@@ -12,28 +12,16 @@ body{
   text-align: center;
 
 }
-// .card{
-//   border:2px solid black;
-// }
-/* Aggiungi questo stile al tuo file .scss per l'effetto di zoom su hover */
-.zoom-on-hover {
-  transition: transform 0.3s; /* Aggiungi una transizione per un effetto più fluido */
-}
-
-.zoom-on-hover:hover {
-  transform: scale(1.05); /* Scala la card del 5% su hover */
-}
-/* File selling-page.component.scss */
-
 /* Stile per la card principale */
 .card {
   border: none;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Aggiungi transizione per box-shadow e transform */
 }
 
 .card:hover {
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta leggermente l'ombra su hover */
+  transform: scale(1.05); /* Scala la card del 5% su hover */
 }
 
 /* Stile per il form */
@@ -71,11 +59,11 @@ body{
   max-width: 100%;
   border-radius: 0.25rem;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; /* Aggiungi transizione per il transform dell'anteprima immagine */
 }
 
 .img-preview:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Scala l'anteprima del 5% su hover */
 }
 
 /* Stile per i campi di input */

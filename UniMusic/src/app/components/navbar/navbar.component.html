@@ -64,9 +64,7 @@
           <a class="nav-link active btn btn-danger px-5" aria-current="page" routerLink="auth/login" *ngIf="!isUserLoggedIn" (click)="closeNavbar()">Sign Up</a>
         </li>
 
-        <!-- <li class="nav-item flex-fill">
-          <a class="nav-link active btn btn-success px-5" aria-current="page" routerLink="/auth/login" *ngIf="!isUserLoggedIn" (click)="closeNavbar()">Login</a>
-        </li> -->
+
 
         <!-- Icona "person-circle" affiancata all'ultimo link -->
         <li class="nav-item mx-4" *ngIf="isUserLoggedIn">
@@ -75,12 +73,14 @@
 
       </ul>
 
+      <i class="bi bi-cart mx-4"></i>
+
       <form class="me-2 mb-2 mb-lg-0">
         <input type="text" class="form-control form-control-sm" placeholder="Search" />
       </form>
 
-      <a class="btn btn-danger logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Esci</a>
-      <a class="btn btnNav commerce"  routerLink="auth/register">m-commerce</a>
+      <a class="btn btn-warning logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Log Out</a>
+
 
     </div>
   </div>

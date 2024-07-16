@@ -8,8 +8,11 @@
             <p class="description">
               Benvenuto, goditi la permanenza e inizia a vendere articoli sul mondo della musica
             </p>
-            <button class="btn btn-primary" (click)="toggleItemForm()">
+            <button class="btn btn-success" (click)="toggleItemForm()">
               Add Items To Shop
+            </button>
+            <button class="btn btn-primary mx-5" (click)="toggleItemForm()">
+              My Items List
             </button>
             <div class="text-center my-3">
             </div>
@@ -74,21 +77,19 @@
 
 
 <!-- Items creati da altri utenti -->
-<!-- Items creati da altri utenti -->
 <div class="container">
   <h1>Available Items</h1>
   <div class="row mt-4">
     <div class="col-md-4 mb-4" *ngFor="let item of otherItems">
       <div class="card h-100 zoom-on-hover">
-        <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
+        <img *ngIf="item.image" [src]="item.image" class="card-img-top img-preview" alt="Item Image">
         <div class="card-body">
           <h5 class="card-title">{{ item.title }}</h5>
-
           <p class="card-text">{{ item.description }}</p>
           <p class="card-text">Available: {{ item.available }}</p>
           <p class="card-text">Price: €{{ item.price }}</p>
           <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-          <button class="btn btn-success mb-2">Buy</button>
+          <button class="btn btn-success mb-2">Add To Cart</button>
           <div><button class="btn btn-warning mb-2">Details</button></div>
         </div>
       </div>

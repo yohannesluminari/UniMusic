@@ -20,46 +20,58 @@
     </div>
   </section>
 
-  <!-- Form per la creazione di un nuovo item -->
-  <div class="container" *ngIf="showItemForm">
-    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
-      <div class="card mb-3">
-        <div class="card-header">
-          New Item Details
+<!-- Form per la creazione di un nuovo item -->
+<div class="container" *ngIf="showItemForm">
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="card shadow mb-3">
+      <div class="card-header bg-primary text-white">
+        New Item Details
+      </div>
+      <div class="card-body">
+        <!-- Titolo -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter title" required>
         </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="form-control" formControlName="title" required>
-          </div>
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea id="description" class="form-control" formControlName="description" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="available">Available: </label>
-            <select id="available" class="form-control" formControlName="available" required>
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="price">Price: € </label>
-            <input type="number" id="price" class="form-control" formControlName="price" required>
-          </div>
-          <div class="form-group">
-            <label for="image">Image:</label>
-            <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*">
-            <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
-          </div>
+
+        <!-- Descrizione -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea id="description" class="form-control" formControlName="description" placeholder="Enter description" rows="4" required></textarea>
         </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Create Item</button>
-          <button type="button" class="btn btn-secondary" (click)="toggleItemForm()">Cancel</button>
+
+        <!-- Disponibilità -->
+        <div class="mb-3">
+          <label for="available" class="form-label">Available:</label>
+          <select id="available" class="form-control" formControlName="available" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+
+        <!-- Prezzo -->
+        <div class="mb-3">
+          <label for="price" class="form-label">Price: €</label>
+          <input type="number" id="price" class="form-control" formControlName="price" placeholder="Enter price" required>
+        </div>
+
+        <!-- Immagine -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Image:</label>
+          <input type="file" id="image" (change)="handleImageInput($event)" accept="image/*" class="form-control">
+          <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" style="max-width: 300px;" alt="Image Preview">
         </div>
       </div>
-    </form>
-  </div>
+
+      <!-- Footer del form -->
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary me-2">Create Item</button>
+        <button type="button" class="btn btn-secondary" (click)="toggleItemForm()">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 
 <!-- Items creati da altri utenti -->
 <!-- Items creati da altri utenti -->

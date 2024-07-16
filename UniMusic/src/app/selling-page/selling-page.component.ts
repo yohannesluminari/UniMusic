@@ -14,6 +14,7 @@ export class SellingPageComponent implements OnInit {
   itemForm!: FormGroup;
   imagePreview: string | null = null;
   items: Item[] = [];
+  users:IUser[] = [];
   userItems: Item[] = []; // Item creati dall'utente loggato
   otherItems: Item[] = []; // Item creati da altri utenti
   showItemForm = false;

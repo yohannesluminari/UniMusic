@@ -15,3 +15,11 @@ body{
 .card{
   border:2px solid black;
 }
+/* Aggiungi questo stile al tuo file .scss per l'effetto di zoom su hover */
+.zoom-on-hover {
+  transition: transform 0.3s; /* Aggiungi una transizione per un effetto più fluido */
+}
+
+.zoom-on-hover:hover {
+  transform: scale(1.05); /* Scala la card del 5% su hover */
+}

@@ -61,80 +61,86 @@
     </form>
   </div>
 
-  <!-- Items creati da altri utenti -->
-  <div class="container">
-    <h1>Available Items</h1>
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4" *ngFor="let item of otherItems">
-        <div class="card h-100">
-          <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Available: {{ item.available }}</p>
-            <p class="card-text">Price: €{{ item.price }}</p>
-            <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
-            <button class="btn btn-success mb-2">Compra</button>
-          </div>
+<!-- Items creati da altri utenti -->
+<!-- Items creati da altri utenti -->
+<div class="container">
+  <h1>Available Items</h1>
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" *ngFor="let item of otherItems">
+      <div class="card h-100 zoom-on-hover">
+        <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text">Available: {{ item.available }}</p>
+          <p class="card-text">Price: €{{ item.price }}</p>
+          <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
+          <button class="btn btn-success mb-2">Buy</button>
+          <div><button class="btn btn-warning mb-2">Details</button></div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Items creati dall'utente loggato -->
-  <div class="container">
-    <h1>Your Items</h1>
-    <div class="row mt-4">
-      <div class="col-md-4 mb-4" *ngFor="let item of userItems">
-        <div class="card h-100">
-          <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Available: €{{ item.available }}</p>
-            <p class="card-text">Price: €{{ item.price }}</p>
-            <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
 
-            <!-- Pulsanti per Edit e Delete -->
-            <div *ngIf="currentUser?.id === item.userId && editingItemId !== item.id">
-              <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
-              <button class="btn btn-primary ms-2" (click)="startEditItem(item)">Edit</button>
+
+<!-- Items creati dall'utente loggato -->
+<div class="container">
+  <h1>Your Items</h1>
+  <div class="row mt-4">
+    <div class="col-md-4 mb-4" *ngFor="let item of userItems">
+      <div class="card h-100 zoom-on-hover">
+        <img *ngIf="item.image" [src]="item.image" class="card-img-top" alt="Item Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text">Available: {{ item.available }}</p>
+          <p class="card-text">Price: €{{ item.price }}</p>
+          <p class="card-text"><small class="text-muted">Created: {{ item.createdAt | date:'medium' }}</small></p>
+
+          <!-- Pulsanti per Edit e Delete -->
+          <div *ngIf="currentUser?.id === item.userId && editingItemId !== item.id">
+            <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+            <button class="btn btn-primary ms-2" (click)="startEditItem(item)">Edit</button>
+          </div>
+
+          <!-- Form per la modifica dell'item -->
+          <form [formGroup]="itemForm" *ngIf="editingItemId === item.id" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" id="title" class="form-control" formControlName="title" required>
             </div>
-
-            <!-- Form per la modifica dell'item -->
-            <form [formGroup]="itemForm" *ngIf="editingItemId === item.id" (ngSubmit)="onSubmit()">
-              <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" id="title" class="form-control" formControlName="title" required>
-              </div>
-              <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea id="description" class="form-control" formControlName="description" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="available">Available: </label>
-                <select id="available" class="form-control" formControlName="available" required>
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="price">Price: €</label>
-                <input type="number" id="price" class="form-control" formControlName="price" required>
-              </div>
-              <div class="form-group">
-                <label for="image">Image:</label>
-                <input type="file" id="image" (change)="handleImageInput($event)" class="form-control">
-              </div>
-              <div class="form-group">
-                <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid" alt="Preview">
-              </div>
-              <button type="submit" class="btn btn-primary">Save</button>
-              <button type="button" class="btn btn-secondary ms-2" (click)="cancelEditItem()">Cancel</button>
-            </form>
-          </div>
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea id="description" class="form-control" formControlName="description" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="available">Available: </label>
+              <select id="available" class="form-control" formControlName="available" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="price">Price: €</label>
+              <input type="number" id="price" class="form-control" formControlName="price" required>
+            </div>
+            <div class="form-group">
+              <label for="image">Image:</label>
+              <input type="file" id="image" (change)="handleImageInput($event)" class="form-control">
+            </div>
+            <div class="form-group">
+              <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid" alt="Preview">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="cancelEditItem()">Cancel</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 </body>

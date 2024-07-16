@@ -16,6 +16,7 @@ export class AreaPrivataComponent  {
   isSidebarVisible: boolean = false;
   isPostFormVisible: boolean = true; // Stato iniziale: la card di creazione post non è visibile
   posts: Post[] = []; // Array per memorizzare i post degli utenti
+  users: IUser[] = [];
   currentUser: IUser | null = null;
   otherUser: IUser | null = null;
 
@@ -41,6 +42,14 @@ export class AreaPrivataComponent  {
      });
 
     this.loadPosts(); // Carica i post all'avvio del componente
+    this.authSvc.getAllUsers().subscribe(
+      (users) => {
+        this.users = users;
+      },
+      (error) => {
+        console.error('Errore durante il recupero degli utenti:', error);
+      }
+    );
   }
 
   loadPosts() {
@@ -84,5 +93,10 @@ export class AreaPrivataComponent  {
 
   togglePostForm() {
     this.isPostFormVisible = !this.isPostFormVisible;
+  }
+  // Metodo per ottenere il nome utente basato sul userId del post
+  getUserUsername(userId: string): string {
+    const user = this.users.find(u => u.id === userId);
+    return user ? user.username : 'Unknown'; // Se l'utente non è trovato, ritorna 'Unknown'
   }
 }

@@ -14,7 +14,10 @@ import { Track } from '../models/Track';
   styleUrl: './uni-music-player.component.scss'
 })
 export class UniMusicPlayerComponent {
-  artistIds: number[] = [525046, 4495513, 339209, 15166511, 382937, 230, 1310298, 48975581, 63273652, 2727681, 48975581];
+  artistIds: number[] = [15166511, 382937, 230, 1310298, 63273652, 2727681,525046, 4495513, 339209,
+    1310298, 63273652, 2727681, 48975581, 79671, 86918012, 13700149, 2936, 1288678, 7165296, 10190528,
+    4446887, 492372, 5061189
+  ];
   artists: Artist[] = [];
   selectedArtist: Artist | null = null;
   selectedAlbum: Album | null = null;

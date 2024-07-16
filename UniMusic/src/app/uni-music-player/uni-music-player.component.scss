@@ -4,22 +4,23 @@ body{
     font-size: 1.7rem;
     text-align: center;
     margin-top: 20px;
-    color: white;
+    color: black;
   }
 }
 .central-part{
+  background-color: white;
   i{
       font-size: 20px;
   }
 }
 .rettangolo{
-  background-color: black !important;
   height: 150px;
   color: black;
   position: fixed;
 }
 .left-bar {
     max-height: 70%;
+
 }
 
 .profile-picture {

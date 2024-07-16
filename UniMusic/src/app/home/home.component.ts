@@ -16,11 +16,11 @@ export class HomeComponent  {
   currentAudioIndex: number | null = null;
 
   audioFiles: string[] = [
-    'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3',
-    'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3',
-    'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3',
-    'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3',
-    'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3', 'RELAX.mp3'
+    'Cartoon.mp3', 'Diviners.mp3', 'InfiNoise.mp3', 'Jone.mp3', 'Last Heroes x TwoWorldsApar.mp3',
+    'Lost.mp3', 'Xaia.mp3', 'seNeVaNayt.mp3', 'seNeVaNayt.mp3', 'RELAX.mp3',
+    'seNeVaNayt.mp3', 'seNeVaNayt.mp3', 'seNeVaNayt.mp3', 'RELAX.mp3', 'seNeVaNayt.mp3', // primo nayt
+    'seNeVaNayt.mp3', 'RELAX.mp3', 'seNeVaNayt.mp3', 'seNeVaNayt.mp3', 'RELAX.mp3',
+    'RELAX.mp3', 'seNeVaNayt.mp3', 'RELAX.mp3', 'RELAX.mp3'
   ];
 
 

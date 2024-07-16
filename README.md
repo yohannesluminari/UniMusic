@@ -44,7 +44,7 @@ Ensure you have Java and Maven installed for the backend.
 Installation and Terminal commands
 Clone the repository:
 
-git clone https://github.com/yourusername/unimusic.git
+git clone https://github.com/namessite.git
 cd unimusic
 
 Frontend Setup: ---> npm install
@@ -54,3 +54,7 @@ Backend Setup: ---> mvn clean install
 Start the Backend: ---> mvn spring-boot:run
 
 Start the Frontend: ---> ng s -o per aprire il sito ; ng s per aggiornare
+
+
+    ....In progress stay tuned
+

@@ -33,8 +33,7 @@
           <div
             class="col-md-6 col-lg-4 mb-4"
             *ngFor="let album of selectedArtist.albums"
-            (click)="selectAlbum(album)"
-          >
+            (click)="selectAlbum(album)">
             <div class="card">
               <img class="card-img-top" [src]="album.coverBig" alt="{{ album.title }}" />
               <div class="card-body">

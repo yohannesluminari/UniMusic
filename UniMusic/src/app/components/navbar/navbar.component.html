@@ -67,16 +67,15 @@
 
 
         <!-- Icona "person-circle" affiancata all'ultimo link -->
-        <li class="nav-item mx-4" *ngIf="isUserLoggedIn">
-          <a href=""><i class="bi bi-person-circle" (click)="toggleNavbar()"></i></a>
+        <li class="nav-item mx-4">
+          <i class="bi bi-cart mx-4 large-icon" *ngIf="isUserLoggedIn"></i>
+
         </li>
 
       </ul>
 
-      <i class="bi bi-cart mx-4"></i>
-
       <form class="me-2 mb-2 mb-lg-0">
-        <input type="text" class="form-control form-control-sm" placeholder="Search" />
+        <input type="text" class="form-control form-control-sm"  placeholder="Search" />
       </form>
 
       <a class="btn btn-warning logout-btn" *ngIf="isUserLoggedIn" (click)="logout()">Log Out</a>
